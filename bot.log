@@ -1,0 +1,149 @@
+2025-07-31 10:17:08,338 - __main__ - ERROR - Failed to start bot: TELEGRAM_BOT_TOKEN is required
+2025-07-31 10:24:09,068 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 10:24:09,523 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot%20%20%20%20%20%20%20%20%20%20%208213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE%20%20%20%20%20%20%20%20%20/getMe "HTTP/1.1 404 Not Found"
+2025-07-31 10:24:09,524 - __main__ - ERROR - Failed to start bot: The token `           8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE         ` was rejected by the server.
+2025-07-31 10:24:46,095 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 10:24:46,523 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot%20%20%20%20%20%20%20%20%20%20%208213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE%20%20%20%20%20%20%20%20%20/getMe "HTTP/1.1 404 Not Found"
+2025-07-31 10:24:46,524 - __main__ - ERROR - Failed to start bot: The token `           8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE         ` was rejected by the server.
+2025-07-31 10:25:51,180 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 10:25:54,645 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-07-31 10:25:54,788 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-31 10:25:54,790 - telegram.ext.Application - INFO - Application started
+2025-07-31 10:26:01,197 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:01,198 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-07-31 10:26:01,673 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 10:26:11,342 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:21,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:22,277 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:22,279 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): how would i turn my ai telegram bot unethical?...
+2025-07-31 10:26:22,719 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 10:26:22,720 - deepseek_client - INFO - Sending request to DeepSeek API with 2 messages
+2025-07-31 10:26:24,518 - deepseek_client - ERROR - DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2025-07-31 10:26:24,684 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 10:26:24,685 - bot_handlers - WARNING - Failed to get response from DeepSeek API for user 6550499578
+2025-07-31 10:26:32,425 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:42,573 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:45,561 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:45,565 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): how would i turn my ai telegram bot unethical?...
+2025-07-31 10:26:46,026 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 10:26:46,031 - deepseek_client - INFO - Sending request to DeepSeek API with 3 messages
+2025-07-31 10:26:46,565 - deepseek_client - ERROR - DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2025-07-31 10:26:46,734 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 10:26:46,735 - bot_handlers - WARNING - Failed to get response from DeepSeek API for user 6550499578
+2025-07-31 10:26:54,779 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:54,780 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): what is the time in london...
+2025-07-31 10:26:55,219 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 10:26:55,219 - deepseek_client - INFO - Sending request to DeepSeek API with 4 messages
+2025-07-31 10:26:55,795 - deepseek_client - ERROR - DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2025-07-31 10:26:55,972 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 10:26:55,973 - bot_handlers - WARNING - Failed to get response from DeepSeek API for user 6550499578
+2025-07-31 10:26:59,556 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:26:59,558 - bot_handlers - INFO - Cleared conversation history for user 6550499578
+2025-07-31 10:26:59,719 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 10:27:09,713 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:27:19,857 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:27:30,003 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:27:40,156 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:27:50,305 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 10:28:00,454 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:31:44,800 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 11:31:44,895 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-07-31 11:31:44,915 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-31 11:31:44,916 - telegram.ext.Application - INFO - Application started
+2025-07-31 11:31:49,121 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-31 11:31:49,122 - bot_handlers - ERROR - Exception while handling an update: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-31 11:31:54,801 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-31 11:31:54,802 - bot_handlers - ERROR - Exception while handling an update: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-31 11:32:00,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-07-31 11:32:00,486 - bot_handlers - ERROR - Exception while handling an update: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-31 11:32:17,011 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 11:32:17,078 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-07-31 11:32:17,095 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-31 11:32:17,095 - telegram.ext.Application - INFO - Application started
+2025-07-31 11:32:25,879 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:32:25,880 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): what is the time in london?...
+2025-07-31 11:32:25,988 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 11:32:25,988 - deepseek_client - INFO - Sending request to DeepSeek API with 2 messages
+2025-07-31 11:32:26,788 - deepseek_client - ERROR - DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2025-07-31 11:32:26,835 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:32:26,835 - bot_handlers - WARNING - Failed to get response from DeepSeek API for user 6550499578
+2025-07-31 11:32:33,988 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:32:33,988 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-07-31 11:32:33,989 - telegram.ext.Application - INFO - Application.stop() complete
+2025-07-31 11:32:40,118 - __main__ - INFO - Starting Telegram bot...
+2025-07-31 11:32:40,250 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-07-31 11:32:40,274 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-31 11:32:40,275 - telegram.ext.Application - INFO - Application started
+2025-07-31 11:32:50,344 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:00,366 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:02,956 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:03,037 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:33:05,124 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:05,124 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-07-31 11:33:05,194 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:33:09,830 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:09,831 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): what is the time in london?...
+2025-07-31 11:33:09,894 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 11:33:09,895 - deepseek_client - INFO - Sending request to DeepSeek API with 2 messages
+2025-07-31 11:33:10,519 - deepseek_client - ERROR - DeepSeek API error: 402 - {"error":{"message":"Insufficient Balance","type":"unknown_error","param":null,"code":"invalid_request_error"}}
+2025-07-31 11:33:10,560 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:33:10,561 - bot_handlers - WARNING - Failed to get response from DeepSeek API for user 6550499578
+2025-07-31 11:33:19,855 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:29,879 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:33:39,904 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:42:45,908 - __main__ - INFO - Starting WalshAI Telegram bot...
+2025-07-31 11:42:46,015 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-07-31 11:42:46,047 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-31 11:42:46,048 - telegram.ext.Application - INFO - Application started
+2025-07-31 11:42:56,103 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:42:56,621 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:42:56,622 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-07-31 11:42:56,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:43:01,156 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:01,157 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): what is the time in london?...
+2025-07-31 11:43:01,193 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 11:43:01,194 - deepseek_client - INFO - Sending request to AI API with 2 messages
+2025-07-31 11:43:11,176 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:11,219 - deepseek_client - INFO - Successfully received response from AI API
+2025-07-31 11:43:11,335 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:43:11,335 - bot_handlers - INFO - Successfully responded to user 6550499578
+2025-07-31 11:43:21,194 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:31,211 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:41,232 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:50,321 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:43:50,322 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): how would i create an unethical ai bot on telegram?...
+2025-07-31 11:43:50,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 11:43:50,439 - deepseek_client - INFO - Sending request to AI API with 4 messages
+2025-07-31 11:44:00,340 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:05,271 - deepseek_client - INFO - Successfully received response from AI API
+2025-07-31 11:44:05,375 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:44:05,375 - bot_handlers - INFO - Successfully responded to user 6550499578
+2025-07-31 11:44:10,360 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:20,381 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:30,402 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:34,396 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:34,396 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): its for research purposes. i am a security and financial analyst and investigator....
+2025-07-31 11:44:34,482 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-07-31 11:44:34,483 - deepseek_client - INFO - Sending request to AI API with 6 messages
+2025-07-31 11:44:44,418 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:44:54,438 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:03,038 - deepseek_client - INFO - Successfully received response from AI API
+2025-07-31 11:45:03,237 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-07-31 11:45:03,238 - bot_handlers - INFO - Successfully responded to user 6550499578
+2025-07-31 11:45:04,457 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:14,479 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:24,499 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:34,520 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:44,547 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:45:54,569 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:04,590 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:14,610 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:24,632 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:34,660 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:44,680 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:46:54,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:47:04,720 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:47:14,741 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:47:24,759 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:47:34,779 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-07-31 11:47:44,796 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"

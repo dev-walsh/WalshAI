@@ -48,7 +48,7 @@ def main():
         # Add error handler
         application.add_error_handler(bot_handlers.error_handler)
         
-        logger.info("Starting Telegram bot...")
+        logger.info("Starting WalshAI Telegram bot...")
         
         # Start the bot
         application.run_polling(

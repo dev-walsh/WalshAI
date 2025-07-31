@@ -57,8 +57,8 @@ class BotHandlers:
         logger.info(f"User {user.id} ({user.username}) started the bot")
         
         welcome_message = (
-            f"🤖 *Welcome to DeepSeek AI Bot!*\n\n"
-            f"Hi {user.first_name}! I'm an AI assistant powered by DeepSeek's advanced language model.\n\n"
+            f"🤖 *Welcome to WalshAI!*\n\n"
+            f"Hi {user.first_name}! I'm your personal AI assistant powered by advanced language models.\n\n"
             f"*Available Commands:*\n"
             f"• `/start` - Show this welcome message\n"
             f"• `/help` - Get help and usage information\n"
@@ -74,13 +74,13 @@ class BotHandlers:
     async def help_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle /help command"""
         help_message = (
-            "*🤖 DeepSeek AI Bot Help*\n\n"
+            "*🤖 WalshAI Help*\n\n"
             "*Available Commands:*\n"
             "• `/start` - Show welcome message\n"
             "• `/help` - Show this help message\n"
             "• `/clear` - Clear your conversation history\n\n"
             "*How it works:*\n"
-            "• Send any text message and I'll respond using DeepSeek AI\n"
+            "• Send any text message and I'll respond using advanced AI\n"
             "• I remember our conversation context for better responses\n"
             "• Each user has their own private conversation history\n\n"
             "*Features:*\n"
@@ -185,13 +185,13 @@ class BotHandlers:
                 
             else:
                 await update.message.reply_text(
-                    "🚫 Sorry, I'm having trouble generating a response right now. "
-                    "This could be due to:\n"
-                    "• High server load\n"
-                    "• Rate limiting\n"
-                    "• Network issues\n\n"
-                    "Please try again in a few moments. If the problem persists, "
-                    "try using /clear to reset our conversation.",
+                    "🚫 I can't generate a response right now. This is likely because:\n\n"
+                    "💳 **AI service needs credits** - Check your account balance\n"
+                    "⚡ High server load\n"
+                    "🌐 Network issues\n\n"
+                    "**To fix**: Add credits to your AI service account, then try again.\n"
+                    "If you recently added credits, wait a few minutes for them to activate.\n\n"
+                    "Use /clear to reset our conversation if needed.",
                     parse_mode=ParseMode.MARKDOWN
                 )
                 logger.warning(f"Failed to get response from DeepSeek API for user {user_id}")

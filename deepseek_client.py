@@ -62,7 +62,7 @@ class DeepSeekClient:
                 "stream": False
             }
             
-            logger.info(f"Sending request to DeepSeek API with {len(messages)} messages")
+            logger.info(f"Sending request to AI API with {len(messages)} messages")
             
             response = self.session.post(
                 self.api_url,
@@ -74,10 +74,10 @@ class DeepSeekClient:
                 data = response.json()
                 if 'choices' in data and len(data['choices']) > 0:
                     content = data['choices'][0]['message']['content']
-                    logger.info("Successfully received response from DeepSeek API")
+                    logger.info("Successfully received response from AI API")
                     return content.strip()
                 else:
-                    logger.error("Invalid response format from DeepSeek API")
+                    logger.error("Invalid response format from AI API")
                     return None
             
             elif response.status_code == 429:
@@ -86,34 +86,34 @@ class DeepSeekClient:
                 return None
             
             elif response.status_code == 401:
-                logger.error("Invalid API key for DeepSeek API")
+                logger.error("Invalid API key for AI API")
                 return None
             
             else:
-                logger.error(f"DeepSeek API error: {response.status_code} - {response.text}")
+                logger.error(f"AI API error: {response.status_code} - {response.text}")
                 return None
                 
         except requests.exceptions.Timeout:
-            logger.error("Timeout while calling DeepSeek API")
+            logger.error("Timeout while calling AI API")
             return None
             
         except requests.exceptions.RequestException as e:
-            logger.error(f"Network error while calling DeepSeek API: {e}")
+            logger.error(f"Network error while calling AI API: {e}")
             return None
             
         except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse DeepSeek API response: {e}")
+            logger.error(f"Failed to parse AI API response: {e}")
             return None
             
         except Exception as e:
-            logger.error(f"Unexpected error while calling DeepSeek API: {e}")
+            logger.error(f"Unexpected error while calling AI API: {e}")
             return None
     
     def get_system_message(self) -> Dict[str, str]:
         """Get the system message for the AI assistant"""
         return {
             "role": "system",
-            "content": "You are a helpful AI assistant created by DeepSeek. You provide informative, accurate, and helpful responses to user questions. Keep your responses concise but comprehensive."
+            "content": "You are WalshAI, a helpful and intelligent AI assistant. You provide informative, accurate, and helpful responses to user questions. Keep your responses concise but comprehensive. You are friendly, professional, and always aim to be helpful."
         }
     
     def close(self):
