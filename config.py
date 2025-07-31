@@ -1,3 +1,4 @@
+
 """
 Configuration management for the Telegram Bot
 """
@@ -32,6 +33,45 @@ class Config:
         
         # Logging
         self.LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
+        
+        # AI Models Configuration
+        self.AI_MODELS = {
+            'financial': {
+                'name': 'Financial Investigator',
+                'emoji': '🔍',
+                'description': 'Specialized in financial investigations, fraud detection, and compliance'
+            },
+            'assistant': {
+                'name': 'General Assistant',
+                'emoji': '🤖',
+                'description': 'General purpose AI assistant for everyday tasks'
+            },
+            'property': {
+                'name': 'Property Development Expert',
+                'emoji': '🏗️',
+                'description': 'Specialized in foreign property development, investment, and sales'
+            },
+            'cloner': {
+                'name': 'Company Cloner',
+                'emoji': '🏢',
+                'description': 'Creates comprehensive company profiles and business structure analysis'
+            },
+            'marketing': {
+                'name': 'Marketing Specialist',
+                'emoji': '📈',
+                'description': 'Expert in property marketing, sales strategies, and investment promotion'
+            },
+            'scam_search': {
+                'name': 'Scam Investigator',
+                'emoji': '🚨',
+                'description': 'Specialized in identifying and explaining various scam methodologies'
+            },
+            'profile_gen': {
+                'name': 'Profile Generator',
+                'emoji': '🆔',
+                'description': 'Generates realistic UK identity profiles for testing purposes'
+            }
+        }
         
     def validate(self):
         """Validate required configuration"""

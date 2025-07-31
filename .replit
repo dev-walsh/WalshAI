@@ -2,3 +2,15 @@ modules = ["python-3.11"]
 
 [nix]
 channel = "stable-25_05"
+
+[workflows]
+runButton = "Run Financial Investigation Bot"
+
+[[workflows.workflow]]
+name = "Run Financial Investigation Bot"
+author = 45791693
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python main.py"

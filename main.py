@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """
 Telegram Bot with DeepSeek AI Integration and Web Dashboard
@@ -8,7 +9,7 @@ import logging
 import os
 import threading
 import time
-from telegram.ext import Application, CommandHandler, MessageHandler, filters
+from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 from config import Config
 from bot_handlers import BotHandlers
 from web_dashboard import BotDashboard
@@ -36,8 +37,8 @@ def main():
         if not config.DEEPSEEK_API_KEY:
             raise ValueError("DEEPSEEK_API_KEY is required")
         
-        # Create application
-        application = Application.builder().token(config.TELEGRAM_BOT_TOKEN).build()
+        # Create application with optimized settings for faster responses
+        application = Application.builder().token(config.TELEGRAM_BOT_TOKEN).read_timeout(10).write_timeout(10).build()
         
         # Initialize bot handlers
         bot_handlers = BotHandlers(config)
@@ -59,20 +60,18 @@ def main():
         application.add_handler(CommandHandler("start", bot_handlers.start_command))
         application.add_handler(CommandHandler("help", bot_handlers.help_command))
         application.add_handler(CommandHandler("clear", bot_handlers.clear_command))
+        application.add_handler(CommandHandler("models", bot_handlers.models_command))
+        application.add_handler(CommandHandler("current", bot_handlers.current_command))
         
-        # Investigation-specific commands
-        application.add_handler(CommandHandler("analyze", bot_handlers.analyze_command))
-        application.add_handler(CommandHandler("redflags", bot_handlers.redflags_command))
-        application.add_handler(CommandHandler("trace", bot_handlers.trace_command))
-        application.add_handler(CommandHandler("compliance", bot_handlers.compliance_command))
-        application.add_handler(CommandHandler("report", bot_handlers.report_command))
+        # Callback query handler for model selection
+        application.add_handler(CallbackQueryHandler(bot_handlers.handle_model_selection))
         
         application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, bot_handlers.handle_message))
         
         # Add error handler
         application.add_error_handler(bot_handlers.error_handler)
         
-        logger.info("Starting WalshAI Financial Investigation Bot...")
+        logger.info("Starting WalshAI Multi-Expert AI Bot...")
         logger.info("Dashboard available at: http://localhost:5000")
         
         # Give dashboard a moment to start
