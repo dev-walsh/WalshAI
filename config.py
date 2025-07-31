@@ -13,10 +13,10 @@ class Config:
     
     def __init__(self):
         # Telegram Bot Configuration
-        self.TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
+        self.TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '').strip()
         
         # DeepSeek API Configuration
-        self.DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY', '')
+        self.DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY', '').strip()
         self.DEEPSEEK_API_URL = os.getenv('DEEPSEEK_API_URL', 'https://api.deepseek.com/v1/chat/completions')
         self.DEEPSEEK_MODEL = os.getenv('DEEPSEEK_MODEL', 'deepseek-chat')
         

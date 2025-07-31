@@ -7,6 +7,7 @@ This is a Telegram chatbot application that integrates with DeepSeek's AI API to
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Project requirement: Must be fully portable to run on Windows PC.
 
 ## System Architecture
 
