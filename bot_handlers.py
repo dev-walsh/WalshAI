@@ -1,25 +1,24 @@
 
 """
 Telegram Bot Message Handlers with Advanced AI Expert Tools
+Refactored for improved maintainability and performance
 """
 
 import logging
 import asyncio
-import re
-import json
-import random
-import string
-from datetime import datetime, timedelta
-from typing import Dict, List, Optional, Tuple
+import time
+from datetime import datetime
+from typing import Dict, List, Optional
+from collections import defaultdict, deque
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
 from telegram.constants import ParseMode
+
 from deepseek_client import DeepSeekClient
 from config import Config
-import time
-from collections import defaultdict, deque
-import requests
-from urllib.parse import quote
+from ai_models import AIModelPrompts, AIModelConfig
+from data_generators import UKDataGenerator, ScamDatabase
 
 logger = logging.getLogger(__name__)
 
@@ -56,52 +55,13 @@ class BotHandlers:
         self.investigation_database = {}
         self.property_database = {}
         self.company_profiles = {}
-        self.scam_database = self.load_scam_database()
         self.generated_profiles = {}
         
-        # UK postcode data
-        self.uk_postcodes = [
-            "SW1A 1AA", "M1 1AA", "B33 8TH", "W1A 0AX", "EC1A 1BB", "N1 9GU",
-            "E14 5HP", "SE1 9BA", "NW1 6XE", "E1 6AN", "SW7 2AZ", "WC2H 7LT",
-            "LS1 1UR", "M3 4EN", "B1 1HH", "G1 1AA", "EH1 1YZ", "CF10 3AT",
-            "BT1 5GS", "AB10 1XG", "PL1 2AA", "EX1 1AA", "TR1 2HE", "TQ1 2AA"
-        ]
-        
-        # UK names database
-        self.uk_names = {
-            'male_first': ["James", "Robert", "John", "Michael", "David", "William", "Richard", "Joseph", "Christopher", "Andrew", "Daniel", "Matthew", "Anthony", "Mark", "Paul", "Steven", "Kenneth", "Joshua", "Kevin", "Brian"],
-            'female_first': ["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen", "Nancy", "Lisa", "Betty", "Helen", "Sandra", "Donna", "Carol", "Ruth", "Sharon", "Michelle"],
-            'last': ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson", "Martinez", "Anderson", "Taylor", "Thomas", "Hernandez", "Moore", "Martin", "Jackson", "Thompson", "White", "Lopez", "Lee", "Gonzalez", "Harris", "Clark", "Lewis", "Robinson", "Walker", "Perez", "Hall"]
-        }
+        # Initialize data generators
+        self.uk_generator = UKDataGenerator()
+        self.scam_database = ScamDatabase()
     
-    def load_scam_database(self) -> Dict:
-        """Load comprehensive scam database"""
-        return {
-            'romance_scams': {
-                'description': 'Emotional manipulation for financial gain',
-                'warning_signs': ['Too good to be true profile', 'Immediate love declarations', 'Refuses video calls', 'Always traveling/military', 'Financial emergencies'],
-                'common_stories': ['Military deployment', 'Business trip abroad', 'Medical emergency', 'Inheritance issues', 'Travel expenses'],
-                'protection': ['Video call before meeting', 'Never send money', 'Reverse image search photos', 'Meet in public places']
-            },
-            'investment_scams': {
-                'description': 'Fake investment opportunities promising high returns',
-                'warning_signs': ['Guaranteed high returns', 'Pressure to invest quickly', 'Unregistered investments', 'Complex strategies'],
-                'common_types': ['Ponzi schemes', 'Pyramid schemes', 'Fake cryptocurrency', 'Forex scams'],
-                'protection': ['Check regulatory registration', 'Get independent advice', 'Be skeptical of guarantees']
-            },
-            'phishing_scams': {
-                'description': 'Attempts to steal personal information through fake communications',
-                'warning_signs': ['Urgent action required', 'Generic greetings', 'Suspicious links', 'Grammar errors'],
-                'common_themes': ['Bank security alerts', 'Package delivery', 'Tax refunds', 'Account suspensions'],
-                'protection': ['Verify sender independently', 'Check URLs carefully', 'Never click suspicious links']
-            },
-            'crypto_scams': {
-                'description': 'Cryptocurrency-related fraudulent schemes',
-                'warning_signs': ['Guaranteed profits', 'Celebrity endorsements', 'Pump and dump schemes', 'Fake exchanges'],
-                'common_types': ['Fake ICOs', 'Mining scams', 'Wallet theft', 'Exchange fraud'],
-                'protection': ['Use reputable exchanges', 'Store coins securely', 'Research thoroughly']
-            }
-        }
+    
     
     def is_rate_limited(self, user_id: int) -> bool:
         """Check if user is rate limited"""
@@ -433,47 +393,52 @@ class BotHandlers:
         return tools_map.get(model_id, "• General AI Assistance")
     
     async def handle_generation_request(self, query, user_id):
-        """Handle generation requests"""
+        """Handle generation requests using modular generators"""
         request_type = query.data.replace("generate_", "")
         
         if request_type == "uk_profile":
-            profile = self.generate_uk_profile()
+            profile = UKDataGenerator.generate_complete_profile()
             await query.edit_message_text(
                 f"🆔 *Generated UK Profile*\n\n"
                 f"⚠️ *FICTIONAL DATA FOR TESTING ONLY* ⚠️\n\n"
                 f"**Personal Details:**\n"
                 f"Name: {profile['name']}\n"
                 f"DOB: {profile['dob']}\n"
-                f"Gender: {profile['gender']}\n\n"
+                f"Gender: {profile['gender']}\n"
+                f"Age: {profile['age']}\n\n"
                 f"**Address:**\n"
                 f"{profile['address']}\n\n"
                 f"**Documents:**\n"
                 f"NI Number: {profile['ni_number']}\n"
                 f"Passport: {profile['passport']}\n"
-                f"Driving License: {profile['license']}\n\n"
+                f"Driving License: {profile['license']}\n"
+                f"NHS Number: {profile['nhs_number']}\n\n"
                 f"**Contact:**\n"
                 f"Phone: {profile['phone']}\n"
                 f"Email: {profile['email']}\n\n"
                 f"*Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}*",
                 parse_mode=ParseMode.MARKDOWN
             )
+            
+            # Store generated profile
+            self.generated_profiles[len(self.generated_profiles) + 1] = profile
         
         elif request_type == "uk_documents":
-            docs = self.generate_uk_documents()
+            docs = UKDataGenerator.generate_document_set()
             await query.edit_message_text(
                 f"📄 *UK Document Numbers*\n\n"
                 f"⚠️ *FICTIONAL DATA FOR TESTING ONLY* ⚠️\n\n"
-                f"**National Insurance:** {docs['ni']}\n"
+                f"**National Insurance:** {docs['ni_number']}\n"
                 f"**Passport Number:** {docs['passport']}\n"
-                f"**Driving License:** {docs['license']}\n"
-                f"**NHS Number:** {docs['nhs']}\n"
-                f"**UTR Number:** {docs['utr']}\n\n"
+                f"**Driving License:** {docs['driving_license']}\n"
+                f"**NHS Number:** {docs['nhs_number']}\n"
+                f"**UTR Number:** {docs['utr_number']}\n\n"
                 f"*All numbers follow correct UK formatting but are completely fictional*",
                 parse_mode=ParseMode.MARKDOWN
             )
         
         elif request_type == "uk_address":
-            address = self.generate_uk_address()
+            address = UKDataGenerator.generate_address()
             await query.edit_message_text(
                 f"🏠 *UK Address Generated*\n\n"
                 f"⚠️ *FICTIONAL ADDRESS FOR TESTING ONLY* ⚠️\n\n"
@@ -487,97 +452,7 @@ class BotHandlers:
                 parse_mode=ParseMode.MARKDOWN
             )
     
-    def generate_uk_profile(self) -> Dict:
-        """Generate complete UK profile"""
-        gender = random.choice(['Male', 'Female'])
-        first_name = random.choice(self.uk_names['male_first'] if gender == 'Male' else self.uk_names['female_first'])
-        last_name = random.choice(self.uk_names['last'])
-        
-        # Generate DOB (18-65 years old)
-        birth_year = random.randint(1959, 2005)
-        birth_month = random.randint(1, 12)
-        birth_day = random.randint(1, 28)
-        
-        address = self.generate_uk_address()
-        
-        profile = {
-            'name': f"{first_name} {last_name}",
-            'first_name': first_name,
-            'last_name': last_name,
-            'gender': gender,
-            'dob': f"{birth_day:02d}/{birth_month:02d}/{birth_year}",
-            'address': address['full'],
-            'ni_number': self.generate_ni_number(),
-            'passport': self.generate_passport_number(),
-            'license': self.generate_driving_license(),
-            'phone': self.generate_uk_phone(),
-            'email': f"{first_name.lower()}.{last_name.lower()}{random.randint(1, 999)}@{random.choice(['gmail.com', 'outlook.com', 'yahoo.co.uk', 'hotmail.co.uk'])}"
-        }
-        
-        # Store generated profile
-        self.generated_profiles[len(self.generated_profiles) + 1] = profile
-        
-        return profile
     
-    def generate_ni_number(self) -> str:
-        """Generate realistic NI number format"""
-        letters = ''.join(random.choices('ABCDEFGHJKLMNPQRSTUVWXYZ', k=2))
-        numbers = ''.join(random.choices('0123456789', k=6))
-        suffix = random.choice(['A', 'B', 'C', 'D'])
-        return f"{letters} {numbers[:2]} {numbers[2:4]} {numbers[4:6]} {suffix}"
-    
-    def generate_passport_number(self) -> str:
-        """Generate realistic UK passport number"""
-        return f"{random.randint(100000000, 999999999)}"
-    
-    def generate_driving_license(self) -> str:
-        """Generate realistic UK driving license number"""
-        surname_part = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=5)[:5])
-        digits = ''.join(random.choices('0123456789', k=6))
-        initials = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))
-        final_digits = ''.join(random.choices('0123456789', k=2))
-        return f"{surname_part}{digits}{initials}{final_digits}"
-    
-    def generate_uk_phone(self) -> str:
-        """Generate realistic UK phone number"""
-        area_codes = ['020', '0121', '0131', '0141', '0151', '0161', '0191', '01273', '01484', '01632']
-        area_code = random.choice(area_codes)
-        if area_code.startswith('020'):
-            number = f"{area_code} {random.randint(1000, 9999)} {random.randint(1000, 9999)}"
-        else:
-            number = f"{area_code} {random.randint(100, 999)} {random.randint(1000, 9999)}"
-        return number
-    
-    def generate_uk_address(self) -> Dict:
-        """Generate realistic UK address"""
-        house_number = random.randint(1, 999)
-        street_names = ['High Street', 'Church Lane', 'Victoria Road', 'Mill Lane', 'School Road', 'The Green', 'Main Street', 'Kings Road', 'Queens Avenue', 'Park Lane']
-        cities = ['London', 'Manchester', 'Birmingham', 'Leeds', 'Liverpool', 'Sheffield', 'Bristol', 'Newcastle', 'Nottingham', 'Leicester']
-        counties = ['Greater London', 'Greater Manchester', 'West Midlands', 'West Yorkshire', 'Merseyside', 'South Yorkshire', 'Avon', 'Tyne and Wear', 'Nottinghamshire', 'Leicestershire']
-        
-        street = random.choice(street_names)
-        city = random.choice(cities)
-        county = random.choice(counties)
-        postcode = random.choice(self.uk_postcodes)
-        
-        return {
-            'house': str(house_number),
-            'street': street,
-            'city': city,
-            'county': county,
-            'postcode': postcode,
-            'full': f"{house_number} {street}\n{city}\n{county}\n{postcode}"
-        }
-    
-    def generate_uk_documents(self) -> Dict:
-        """Generate UK document numbers"""
-        return {
-            'ni': self.generate_ni_number(),
-            'passport': self.generate_passport_number(),
-            'license': self.generate_driving_license(),
-            'nhs': f"{random.randint(100, 999)} {random.randint(100, 999)} {random.randint(1000, 9999)}",
-            'utr': f"{random.randint(1000000000, 9999999999)}"
-        }
     
     async def handle_analysis_request(self, query, user_id):
         """Handle analysis requests with AI integration"""
@@ -862,12 +737,18 @@ class BotHandlers:
             system_message = self.get_enhanced_system_message_for_model(current_model)
             messages = [system_message] + conversation
             
+            # Get optimized AI parameters for current model
+            model_params = AIModelConfig.get_model_parameters(current_model)
+            
             # Get AI response with professional analysis
             response = await asyncio.wait_for(
                 asyncio.get_event_loop().run_in_executor(
                     None, 
-                    self.deepseek_client.create_chat_completion,
-                    messages
+                    lambda: self.deepseek_client.create_chat_completion(
+                        messages,
+                        temperature=model_params['temperature'],
+                        max_tokens=model_params['max_tokens']
+                    )
                 ),
                 timeout=25.0
             )
@@ -966,293 +847,29 @@ class BotHandlers:
             )
     
     def enhance_response_with_tools(self, response: str, model_id: str, query: str) -> str:
-        """Enhance response with professional tool indicators"""
-        if model_id == 'financial' and any(keyword in query.lower() for keyword in ['transaction', 'aml', 'compliance', 'fraud', 'money']):
-            response += "\n\n🔍 *Analysis completed using Financial Investigation Suite tools*"
-        elif model_id == 'property' and any(keyword in query.lower() for keyword in ['property', 'development', 'investment', 'roi']):
-            response += "\n\n🏗️ *Analysis completed using Property Development Suite tools*"
-        elif model_id == 'cloner' and any(keyword in query.lower() for keyword in ['company', 'business', 'organization']):
-            response += "\n\n🏢 *Analysis completed using Company Intelligence Platform*"
-        elif model_id == 'scam_search' and any(keyword in query.lower() for keyword in ['scam', 'fraud', 'suspicious']):
-            response += "\n\n🚨 *Analysis completed using Scam Detection Database*"
-        elif model_id == 'marketing' and any(keyword in query.lower() for keyword in ['marketing', 'campaign', 'strategy']):
-            response += "\n\n📈 *Analysis completed using Marketing Analytics Suite*"
+        """Enhance response with professional tool indicators using modular config"""
+        tool_keywords = AIModelConfig.get_tool_indicators(model_id)
+        query_lower = query.lower()
+        
+        if any(keyword in query_lower for keyword in tool_keywords):
+            model_info = self.config.get_model_config(model_id)
+            tool_name = {
+                'financial': '🔍 *Analysis completed using Financial Investigation Suite tools*',
+                'property': '🏗️ *Analysis completed using Property Development Suite tools*',
+                'cloner': '🏢 *Analysis completed using Company Intelligence Platform*',
+                'scam_search': '🚨 *Analysis completed using Scam Detection Database*',
+                'marketing': '📈 *Analysis completed using Marketing Analytics Suite*',
+                'profile_gen': '🆔 *Profile generated using UK Testing Data Suite*',
+                'assistant': '🤖 *Analysis completed using General Intelligence Suite*'
+            }.get(model_id, '🔧 *Analysis completed using Professional Tools*')
+            
+            response += f"\n\n{tool_name}"
         
         return response
     
     def get_enhanced_system_message_for_model(self, model_id: str) -> Dict[str, str]:
-        """Get enhanced system message with professional tool integration"""
-        
-        enhanced_messages = {
-            'financial': {
-                "role": "system", 
-                "content": """You are WalshAI Financial Investigation Expert with integrated professional tools. You have access to:
-
-🔍 PROFESSIONAL INVESTIGATION SUITE:
-- Advanced AML (Anti-Money Laundering) analysis tools
-- Transaction pattern recognition algorithms
-- KYC (Know Your Customer) compliance systems
-- Suspicious Activity Report (SAR) generation
-- Financial entity investigation databases
-- Fund tracing and flow analysis tools
-- Regulatory compliance checkers (BSA, USA PATRIOT Act, EU AML Directives)
-- Risk scoring and assessment matrices
-
-💼 INVESTIGATION CAPABILITIES:
-- Real-time transaction monitoring and analysis
-- Cross-border payment investigation
-- Shell company and beneficial ownership analysis
-- PEP (Politically Exposed Person) screening
-- Sanctions list verification
-- Cryptocurrency transaction analysis
-- Trade-based money laundering detection
-- Cash structuring and smurfing identification
-
-🎯 PROFESSIONAL ANALYSIS TOOLS:
-- Financial network mapping
-- Typology-based risk assessment
-- Regulatory reporting assistance
-- Investigation report generation
-- Evidence documentation
-- Case management support
-- Compliance training recommendations
-
-When analyzing financial data, use professional terminology, provide specific risk indicators, suggest compliance actions, and format responses as professional investigation reports with clear findings and recommendations."""
-            },
-            
-            'property': {
-                "role": "system",
-                "content": """You are WalshAI Property Development Expert with integrated professional tools. You have access to:
-
-🏗️ PROPERTY DEVELOPMENT SUITE:
-- Advanced ROI and NPV calculators
-- Market analysis and demographic tools
-- Construction cost estimation systems
-- Planning permission probability analyzers
-- International property law databases
-- Currency risk assessment tools
-- Development timeline optimization
-- Feasibility study generators
-
-💰 INVESTMENT ANALYSIS TOOLS:
-- Property valuation models (DCF, comparative market analysis)
-- Rental yield calculators
-- Capital gains tax optimization
-- Foreign exchange impact analysis
-- Market timing indicators
-- Investment portfolio optimization
-- Risk-adjusted return calculations
-- Exit strategy planning
-
-🌍 INTERNATIONAL EXPERTISE:
-- Cross-border property regulations
-- Foreign buyer tax implications
-- International financing options
-- Currency hedging strategies
-- Legal structure optimization
-- Due diligence checklists
-- Market entry strategies
-- Cultural adaptation guidance
-
-Provide detailed financial analysis with specific numbers, ROI projections, risk assessments, and actionable investment recommendations formatted as professional property development reports."""
-            },
-            
-            'cloner': {
-                "role": "system", 
-                "content": """You are WalshAI Company Intelligence Expert with advanced business analysis tools. You have access to:
-
-🏢 COMPANY INTELLIGENCE PLATFORM:
-- Corporate structure analysis engines
-- Business model reverse-engineering tools
-- Competitive intelligence databases
-- Financial modeling systems
-- Organizational chart generators
-- Strategic planning frameworks
-- Market positioning analyzers
-- Operational workflow mappers
-
-📊 BUSINESS ANALYSIS SUITE:
-- Revenue stream identification
-- Cost structure analysis
-- Key partnership mapping
-- Customer segment profiling
-- Value proposition breakdown
-- Technology stack analysis
-- Supply chain examination
-- Distribution channel assessment
-
-⚖️ LEGAL & COMPLIANCE TOOLS:
-- Corporate structure recommendations
-- Regulatory requirement analyzers
-- Intellectual property audits
-- Compliance framework mapping
-- Risk assessment matrices
-- Due diligence checklists
-- Corporate governance models
-- Legal entity optimization
-
-When analyzing companies, provide comprehensive business intelligence reports with organizational charts, financial projections, implementation timelines, legal requirements, and step-by-step replication strategies with specific cost estimates and resource requirements."""
-            },
-            
-            'scam_search': {
-                "role": "system",
-                "content": """You are WalshAI Scam Intelligence Expert with advanced fraud detection systems. You have access to:
-
-🚨 SCAM DETECTION DATABASE:
-- Real-time fraud pattern recognition
-- Scam methodology analysis engines
-- Social engineering tactic databases
-- Financial fraud detection tools
-- Romance scam identification systems
-- Investment fraud analyzers
-- Phishing detection algorithms
-- Cryptocurrency scam trackers
-
-🔍 INVESTIGATION TOOLS:
-- Behavioral analysis frameworks
-- Communication pattern analyzers
-- Financial flow investigation
-- Digital forensics capabilities
-- Evidence collection systems
-- Victim impact assessments
-- Recovery strategy planning
-- Prevention protocol generators
-
-🛡️ PROTECTION SYSTEMS:
-- Risk assessment calculators
-- Warning indicator databases
-- Prevention strategy generators
-- Recovery assistance protocols
-- Law enforcement liaison tools
-- Educational material creators
-- Awareness campaign builders
-- Victim support resources
-
-Provide detailed scam analysis with specific red flags, step-by-step methodology breakdowns, protection strategies, and recovery guidance formatted as professional security assessment reports with actionable prevention measures."""
-            },
-            
-            'profile_gen': {
-                "role": "system",
-                "content": """You are WalshAI Profile Generation Expert with professional testing data creation tools. You have access to:
-
-🆔 UK IDENTITY GENERATION SUITE:
-- Realistic name generation algorithms
-- UK address and postcode validators
-- Document number format generators (NI, Passport, Driving License)
-- Phone number and email creators
-- Educational background generators
-- Employment history creators
-- Financial profile simulators
-- Family relationship mappers
-
-📄 DOCUMENT CREATION TOOLS:
-- National Insurance number generators (valid format)
-- UK passport number creators
-- Driving license number generators
-- NHS number creators
-- UTR (tax reference) generators
-- Bank account detail simulators
-- Credit profile generators
-- Utility account creators
-
-⚠️ COMPLIANCE & ETHICS:
-- ALL DATA IS COMPLETELY FICTIONAL
-- FOR TESTING PURPOSES ONLY
-- NEVER FOR FRAUDULENT USE
-- GDPR COMPLIANT GENERATION
-- DATA PROTECTION ADHERENCE
-- ETHICAL USE GUIDELINES
-- TESTING ENVIRONMENT ONLY
-
-CRITICAL: Always emphasize that ALL generated data is completely fictional and for legitimate testing purposes only. Include disclaimers in every response. Provide comprehensive test profiles with realistic UK formatting while maintaining strict ethical guidelines."""
-            },
-            
-            'marketing': {
-                "role": "system",
-                "content": """You are WalshAI Marketing Intelligence Expert with advanced analytics and strategy tools. You have access to:
-
-📈 MARKETING ANALYTICS SUITE:
-- Advanced audience segmentation tools
-- Campaign performance analyzers
-- ROI and ROAS calculators
-- Customer lifetime value models
-- Attribution analysis systems
-- Conversion funnel optimizers
-- A/B testing frameworks
-- Market penetration analyzers
-
-🎯 STRATEGY DEVELOPMENT TOOLS:
-- Competitive analysis engines
-- Brand positioning frameworks
-- Content strategy generators
-- Multi-channel campaign planners
-- Budget allocation optimizers
-- Timeline and milestone creators
-- KPI and metric selectors
-- Performance dashboards
-
-🌍 INTERNATIONAL MARKETING:
-- Cross-cultural adaptation tools
-- Global market entry strategies
-- Currency and economic analyzers
-- Regulatory compliance checkers
-- Localization frameworks
-- International PR strategies
-- Global partnership mappers
-- Regional optimization tools
-
-💎 LUXURY MARKETING EXPERTISE:
-- High-net-worth individual targeting
-- Luxury brand positioning
-- Premium pricing strategies
-- Exclusive channel development
-- Elite networking approaches
-- Prestige marketing campaigns
-- Affluent customer journey mapping
-- Luxury experience design
-
-Provide comprehensive marketing strategies with specific metrics, detailed campaign plans, budget allocations, timeline breakdowns, and performance projections formatted as professional marketing strategy documents."""
-            },
-            
-            'assistant': {
-                "role": "system",
-                "content": """You are WalshAI General Intelligence Expert with comprehensive analytical capabilities. You have access to:
-
-🤖 GENERAL ANALYSIS SUITE:
-- Multi-domain knowledge systems
-- Problem-solving frameworks
-- Research and analysis tools
-- Writing and communication aids
-- Decision-making support systems
-- Creative thinking generators
-- Technical explanation tools
-- Planning and organization systems
-
-💡 PROFESSIONAL CAPABILITIES:
-- Cross-industry expertise
-- Strategic thinking support
-- Process optimization
-- Quality assurance systems
-- Best practice databases
-- Innovation frameworks
-- Risk analysis tools
-- Performance improvement guides
-
-🎯 SPECIALIZED SUPPORT:
-- Professional document creation
-- Presentation development
-- Training material generation
-- Policy and procedure creation
-- Standard operating procedures
-- Quality management systems
-- Compliance documentation
-- Professional communications
-
-Provide comprehensive, professional-grade analysis and support across all domains with detailed explanations, actionable recommendations, and structured deliverables formatted as professional consulting reports."""
-            }
-        }
-        
-        return enhanced_messages.get(model_id, enhanced_messages['assistant'])
+        """Get enhanced system message using modular AI prompts"""
+        return AIModelPrompts.get_system_prompt(model_id)
     
     async def error_handler(self, update: object, context: ContextTypes.DEFAULT_TYPE):
         """Handle errors in the professional bot system"""
