@@ -185,6 +185,8 @@ class BotHandlers:
             await self.handle_generation_request(query, user_id)
         elif query.data.startswith("analyze_"):
             await self.handle_analysis_request(query, user_id)
+        elif query.data.startswith("tools_"):
+            await self.handle_tool_selection(query, user_id)
     
     async def handle_model_change(self, query, user_id):
         """Handle AI model switching"""
@@ -440,6 +442,116 @@ class BotHandlers:
                 f"City: {address['city']}\n"
                 f"Postcode: {address['postcode']}\n"
                 f"County: {address['county']}",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "uk_contact":
+            contact = UKDataGenerator.generate_contact_details()
+            await query.edit_message_text(
+                f"📱 *UK Contact Details Generated*\n\n"
+                f"⚠️ *FICTIONAL DATA FOR TESTING ONLY* ⚠️\n\n"
+                f"**Phone:** {contact['phone']}\n"
+                f"**Mobile:** {contact['mobile']}\n"
+                f"**Email:** {contact['email']}\n"
+                f"**Alternative Email:** {contact['alt_email']}\n\n"
+                f"*All contact details are completely fictional*",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "business_profile":
+            business = UKDataGenerator.generate_business_profile()
+            await query.edit_message_text(
+                f"💼 *UK Business Profile Generated*\n\n"
+                f"⚠️ *FICTIONAL DATA FOR TESTING ONLY* ⚠️\n\n"
+                f"**Company:** {business['company_name']}\n"
+                f"**Registration:** {business['company_number']}\n"
+                f"**VAT Number:** {business['vat_number']}\n"
+                f"**Business Type:** {business['business_type']}\n"
+                f"**Industry:** {business['industry']}\n"
+                f"**Address:** {business['registered_address']}\n"
+                f"**Directors:** {business['directors']}\n\n"
+                f"*Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}*",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            
+            # Store business profile
+            self.company_profiles[len(self.company_profiles) + 1] = business
+        
+        elif request_type == "roi_calc":
+            await query.edit_message_text(
+                f"💎 *Property Investment Calculator Ready*\n\n"
+                f"I'm ready to help you calculate property investment returns.\n\n"
+                f"**Please provide:**\n"
+                f"• Purchase price\n"
+                f"• Expected rental income (monthly)\n"
+                f"• Renovation costs\n"
+                f"• Holding period\n\n"
+                f"*Next Step:* Send your property details as a message and I'll calculate comprehensive ROI analysis.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "feasibility":
+            await query.edit_message_text(
+                f"📋 *Property Feasibility Study Generator*\n\n"
+                f"I'll create a comprehensive feasibility study for your property development.\n\n"
+                f"**Please provide:**\n"
+                f"• Property location and type\n"
+                f"• Development plans\n"
+                f"• Budget range\n"
+                f"• Timeline requirements\n\n"
+                f"*Next Step:* Send your project details and I'll generate a professional feasibility analysis.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "cost_estimate":
+            await query.edit_message_text(
+                f"💰 *Construction Cost Estimator*\n\n"
+                f"I'll provide detailed cost estimates for your property project.\n\n"
+                f"**I can estimate costs for:**\n"
+                f"• New builds\n"
+                f"• Renovations\n"
+                f"• Extensions\n"
+                f"• Commercial developments\n\n"
+                f"*Next Step:* Describe your project and I'll break down all costs.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "campaign":
+            await query.edit_message_text(
+                f"📈 *Marketing Campaign Generator*\n\n"
+                f"I'll create a comprehensive marketing strategy for your business.\n\n"
+                f"**Campaign Types:**\n"
+                f"• Digital marketing strategies\n"
+                f"• Social media campaigns\n"
+                f"• Property marketing\n"
+                f"• Lead generation\n\n"
+                f"*Next Step:* Tell me about your business and target audience.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "luxury_strategy":
+            await query.edit_message_text(
+                f"💎 *Luxury Marketing Strategy*\n\n"
+                f"I'll develop high-end marketing approaches for luxury properties and services.\n\n"
+                f"**Specializes in:**\n"
+                f"• Ultra-high-net-worth targeting\n"
+                f"• Luxury property marketing\n"
+                f"• Exclusive brand positioning\n"
+                f"• Premium channel strategies\n\n"
+                f"*Next Step:* Describe your luxury offering and target market.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif request_type == "intl_strategy":
+            await query.edit_message_text(
+                f"🌍 *International Marketing Strategy*\n\n"
+                f"I'll create cross-border marketing strategies for global expansion.\n\n"
+                f"**Global Expertise:**\n"
+                f"• Multi-market entry strategies\n"
+                f"• Cultural adaptation\n"
+                f"• International property investment\n"
+                f"• Cross-border compliance\n\n"
+                f"*Next Step:* Tell me about your target markets and expansion plans.",
                 parse_mode=ParseMode.MARKDOWN
             )
     
@@ -793,7 +905,7 @@ class BotHandlers:
                         max_tokens=model_params['max_tokens']
                     )
                 ),
-                timeout=25.0
+                timeout=40.0
             )
             
             if response and not response.startswith('❌') and not response.startswith('⏰') and not response.startswith('🌐'):
