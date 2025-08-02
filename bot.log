@@ -2213,3 +2213,34 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 13:04:58,518 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 2025-08-02 12:24:10,495 - config - INFO - Configuration validation successful
 2025-08-02 12:24:10,539 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
+2025-08-02 12:24:42,445 - config - INFO - Configuration validation successful
+2025-08-02 12:24:42,461 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:24:42,461 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:24:42,784 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:24:42,784 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:24:47,126 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:24:47,126 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:24:47,130 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:24:47,130 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:24:47,131 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:24:47,131 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:24:47,134 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+2025-08-02 12:24:47,134 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:24:48,618 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:24:48] "GET / HTTP/1.1" 200 -
+2025-08-02 12:24:49,335 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:24:49] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:24:49,336 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:24:49] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:24:49,711 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:24:49,711 - telegram.ext._application - INFO - Application started
+2025-08-02 12:24:52,281 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:24:57,586 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:24:57,996 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 12:24:59,362 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:25:04,021 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:25:15,545 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): generate me a uk corporate profile...
+2025-08-02 12:25:19,350 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:25:19] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:25:35,855 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 12:25:36,329 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 12:25:49,352 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:25:49] "GET /api/stats HTTP/1.1" 200 -
