@@ -241,6 +241,14 @@ class UKDataGenerator:
             'incorporation_date': UKDataGenerator.generate_random_date(1990, 2023)
         }
 
+    @staticmethod
+    def generate_random_date(start_year: int, end_year: int) -> str:
+        """Generate a random date between start_year and end_year"""
+        year = random.randint(start_year, end_year)
+        month = random.randint(1, 12)
+        day = random.randint(1, 28)  # Use 28 to avoid month-specific day issues
+        return f"{day:02d}/{month:02d}/{year}"
+
 class ScamDatabase:
     """Comprehensive scam detection database"""
 
@@ -372,4 +380,3 @@ class ScamDatabase:
                     break
 
         return list(set(detected_scams))  # Remove duplicates
-`
