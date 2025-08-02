@@ -2000,3 +2000,171 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 11:58:10,127 - telegram.ext.Application - INFO - Application.stop() complete
 2025-08-02 11:58:11,900 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
 2025-08-02 11:58:16,994 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
+2025-08-02 11:58:53,077 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 11:58:53,387 - deepseek_client - INFO - Basic network connectivity to DeepSeek API confirmed
+2025-08-02 11:58:53,387 - deepseek_client - INFO - Sending optimized request to DeepSeek API (2 messages)
+2025-08-02 11:58:54,472 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 11:58:54,492 - deepseek_client - INFO - Basic network connectivity to DeepSeek API confirmed
+2025-08-02 11:58:54,493 - deepseek_client - INFO - Sending optimized request to DeepSeek API (2 messages)
+2025-08-02 11:58:57,364 - deepseek_client - INFO - API request completed in 3.98s
+2025-08-02 11:58:57,365 - deepseek_client - INFO - Successfully received response (36 chars)
+2025-08-02 11:58:57,365 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 11:58:57,374 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 11:58:57,374 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 11:58:57,374 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 11:58:57,375 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.87.2:5000
+2025-08-02 11:58:57,375 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 11:58:57,876 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:58:57] "GET / HTTP/1.1" 200 -
+2025-08-02 11:58:58,346 - deepseek_client - INFO - API request completed in 3.85s
+2025-08-02 11:58:58,347 - deepseek_client - INFO - Successfully received response (36 chars)
+2025-08-02 11:58:58,347 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 11:58:58,356 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 11:58:58,359 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 11:58:58,359 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 11:58:58,933 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:58:58] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 11:58:58,935 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:58:58] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 11:58:59,804 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-08-02 11:58:59,946 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-02 11:58:59,948 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 11:58:59,948 - telegram.ext.Application - INFO - Application started
+2025-08-02 11:59:00,789 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-08-02 11:59:00,931 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-02 11:59:00,933 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 11:59:00,933 - telegram.ext.Application - INFO - Application started
+2025-08-02 11:59:00,969 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:00,971 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 11:59:01,186 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:59:01,360 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:01,361 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:01,361 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:05,505 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:05,506 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:05,506 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:06,493 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:06,495 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 11:59:06,670 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:06,671 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:06,671 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:06,970 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:59:06,970 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 11:59:07,885 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:07,887 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 11:59:08,082 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:59:09,254 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:09,405 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 11:59:09,573 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 11:59:10,818 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:10,819 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:10,819 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:10,819 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:10,990 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 11:59:11,167 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 11:59:12,462 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:12,463 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:12,463 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:16,606 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:16,607 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:16,607 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:19,000 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:19,001 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:19,001 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:20,679 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:20,681 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): i recieved an email from coinbase with a different domain...
+2025-08-02 11:59:20,681 - deepseek_client - INFO - Sending optimized request to DeepSeek API (2 messages)
+2025-08-02 11:59:21,128 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendChatAction "HTTP/1.1 200 OK"
+2025-08-02 11:59:23,645 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:23,646 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:23,646 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:27,165 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:27,166 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:27,167 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:28,951 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:59:28] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 11:59:31,310 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:31,311 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:31,311 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:35,930 - deepseek_client - ERROR - Connection error to DeepSeek API: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 11:59:36,380 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:59:36,381 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 11:59:36,808 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:36,808 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:36,808 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:41,452 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:41,453 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:41,453 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:45,889 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:45,891 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 11:59:46,345 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:59:49,193 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:49,348 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 11:59:49,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:49,486 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:49,486 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:49,516 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 11:59:50,971 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:59:51,178 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 11:59:51,357 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 11:59:53,629 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 11:59:53,632 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:53,633 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 11:59:58,947 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:59:58] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:00:01,136 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:05,465 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:00:05,466 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:05,466 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:09,612 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:00:09,612 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:09,612 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:16,609 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:17,325 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:17,326 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:00:17,784 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 12:00:18,873 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:19,037 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 12:00:19,227 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 12:00:20,411 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:20,413 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:00:20,579 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 12:00:21,200 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:21,349 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 12:00:21,550 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 12:00:22,756 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:22,757 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:00:22,918 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 12:00:23,589 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:23,740 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 12:00:23,902 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 12:00:27,147 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:00:27,147 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:27,147 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:28,951 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:00:28] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:00:31,293 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:00:31,294 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:31,294 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:38,292 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:48,437 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:00:57,377 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:00:57,378 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:57,378 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:00:58,962 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:00:58] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:01:01,526 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:01:01,526 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:01,527 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:08,521 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:01:18,665 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:01:23,990 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:01:23,992 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:01:24,461 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 12:01:28,951 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:01:28] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:01:31,982 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:01:31,983 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:31,983 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:36,134 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 12:01:36,135 - telegram.ext.Updater - ERROR - Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:36,135 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:01:43,135 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:01:53,280 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:01:58,953 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:01:58] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:02:03,428 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
