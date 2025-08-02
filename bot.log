@@ -2656,3 +2656,56 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 13:00:03,833 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
 2025-08-02 13:00:04,158 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
 2025-08-02 13:00:05,176 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:00:05] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:00:21,836 - bot_handlers - ERROR - Professional system error: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-08-02 13:00:33,740 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): Male Conner Walsh from essex age 24...
+2025-08-02 13:00:35,179 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:00:35] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:01:00,154 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 13:01:01,277 - asyncio - ERROR - Task was destroyed but it is pending!
+task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at /home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/telegram/ext/_application.py:1014> wait_for=<Future pending cb=[Task.task_wakeup()]>>
+2025-08-02 13:02:56,682 - config - INFO - Configuration validation successful
+2025-08-02 13:02:56,706 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 13:02:56,706 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 13:02:56,931 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 13:02:56,931 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 13:03:00,893 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 13:03:00,893 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 13:03:00,899 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 13:03:00,900 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 13:03:00,902 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 13:03:00,903 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 13:03:00,905 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.66.162:5000
+2025-08-02 13:03:00,906 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 13:03:01,362 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:01] "GET / HTTP/1.1" 200 -
+2025-08-02 13:03:02,226 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:02] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:03:02,244 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:02] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:03:03,418 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 13:03:03,418 - telegram.ext._application - INFO - Application started
+2025-08-02 13:03:05,393 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:05] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:03:06,279 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:06] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:03:12,449 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:12] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:03:18,136 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:18] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 13:03:19,246 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:19] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:03:24,476 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:24] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:03:32,234 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:32] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:03:32,235 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:32] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:03:33,619 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:33] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:03:35,210 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:35] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:03:35,919 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:35] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:03:36,299 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:03:36] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:03:39,082 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:03:39,505 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:03:42,283 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 13:03:42,475 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 13:03:42,475 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 13:04:02,245 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:02] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:04:02,247 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:02] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:04:12,836 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 13:04:13,306 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 13:04:13,307 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:04:13,527 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:04:29,207 - bot_handlers - ERROR - Professional system error: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-08-02 13:04:32,238 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:32] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:04:32,241 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:32] "GET /api/stats HTTP/1.1" 200 -
