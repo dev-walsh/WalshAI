@@ -2709,3 +2709,57 @@ task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at
 2025-08-02 13:04:29,207 - bot_handlers - ERROR - Professional system error: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
 2025-08-02 13:04:32,238 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:32] "GET /api/messages HTTP/1.1" 200 -
 2025-08-02 13:04:32,241 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:04:32] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:04:36,651 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): conner walsh from essex age 24...
+2025-08-02 13:05:01,398 - bot_handlers - INFO - Successfully provided professional analysis to user 6550499578 using profile_gen expert
+2025-08-02 13:05:01,398 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): conner walsh from essex age 24...
+2025-08-02 13:05:02,244 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:02] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:05:02,246 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:02] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:05:31,708 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 13:05:32,088 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 13:05:32,241 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:32] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:05:32,243 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:32] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:05:32,904 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:32] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:05:33,543 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 13:05:33,544 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 13:05:33,554 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 13:05:34,993 - config - INFO - Configuration validation successful
+2025-08-02 13:05:35,011 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 13:05:35,012 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 13:05:35,027 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 13:05:35,027 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 13:05:38,970 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 13:05:38,970 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 13:05:38,977 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 13:05:38,977 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 13:05:38,980 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 13:05:38,980 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 13:05:38,982 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.66.162:5000
+2025-08-02 13:05:38,982 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 13:05:39,404 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:39] "GET / HTTP/1.1" 200 -
+2025-08-02 13:05:40,234 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:40] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:05:40,245 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:40] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:05:41,479 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 13:05:41,480 - telegram.ext._application - INFO - Application started
+2025-08-02 13:05:42,510 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:42] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:05:43,933 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:43] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:05:44,394 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:44] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:05:45,470 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:45] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:05:45,973 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:45] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:05:46,407 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:46] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:05:46,826 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:46] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:05:52,863 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:52] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 13:05:53,979 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:05:53] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:06:00,757 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:00] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 13:06:01,878 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:01] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:06:04,253 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:04] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:06:04,708 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:04] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:06:10,237 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:10] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:06:10,237 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:06:14,273 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:06:14,661 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:06:31,215 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 13:06:31,599 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 13:06:31,599 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
