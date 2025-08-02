@@ -327,15 +327,33 @@ class BotDashboard:
             """Get financial investigations data"""
             try:
                 investigations = []
-                if hasattr(self.bot_handlers, 'investigation_database'):
-                    for inv_id, inv_data in self.bot_handlers.investigation_database.items():
-                        investigations.append({
-                            'id': inv_id,
-                            'type': inv_data.get('type', 'General'),
-                            'status': inv_data.get('status', 'Active'),
-                            'created': inv_data.get('created', datetime.now().isoformat()),
-                            'summary': inv_data.get('summary', 'Investigation in progress')
-                        })
+                
+                # Generate investigations from message logs with investigation queries
+                investigation_messages = [m for m in self.message_logs if m.get('is_investigation')]
+                
+                for i, msg in enumerate(investigation_messages[-20:]):  # Last 20 investigations
+                    investigations.append({
+                        'id': f"inv_{i+1}",
+                        'type': 'Financial Investigation',
+                        'status': 'Completed',
+                        'created': msg.get('timestamp', datetime.now().isoformat()),
+                        'summary': f"Investigation query: {msg.get('message', '')[:100]}...",
+                        'user_id': msg.get('user_id'),
+                        'ai_model': msg.get('ai_model', 'financial'),
+                        'response_time': msg.get('response_time', 0)
+                    })
+                
+                # If no real investigations, add some sample data to show the feature works
+                if not investigations:
+                    investigations = [
+                        {
+                            'id': 'sample_1',
+                            'type': 'AML Compliance Check',
+                            'status': 'Ready',
+                            'created': datetime.now().isoformat(),
+                            'summary': 'System ready for financial investigations. Send investigation queries to generate real data.'
+                        }
+                    ]
                 
                 return jsonify({
                     'investigations': investigations,
@@ -373,16 +391,29 @@ class BotDashboard:
             """Get scam analysis data"""
             try:
                 scams = []
-                for message in self.message_logs:
-                    if message.get('is_scam'):
-                        scams.append({
-                            'id': len(scams) + 1,
-                            'type': 'Detected Scam',
-                            'message': message.get('message', '')[:200],
-                            'timestamp': message.get('timestamp'),
-                            'user_id': message.get('user_id'),
-                            'risk_level': 'High'
-                        })
+                scam_messages = [m for m in self.message_logs if m.get('is_scam')]
+                
+                for i, message in enumerate(scam_messages):
+                    scams.append({
+                        'id': f"scam_{i+1}",
+                        'type': 'Scam Analysis',
+                        'message': message.get('message', '')[:200],
+                        'timestamp': message.get('timestamp'),
+                        'user_id': message.get('user_id'),
+                        'risk_level': 'High',
+                        'ai_model': message.get('ai_model', 'scam_search')
+                    })
+                
+                # Add sample if no real scam analyses
+                if not scams:
+                    scams = [{
+                        'id': 'sample_1',
+                        'type': 'Scam Detection System',
+                        'message': 'System ready for scam analysis. Send suspicious content to generate real data.',
+                        'timestamp': datetime.now().isoformat(),
+                        'user_id': 0,
+                        'risk_level': 'Info'
+                    }]
                 
                 return jsonify({
                     'scams': scams,
@@ -397,15 +428,32 @@ class BotDashboard:
             """Get generated profiles data"""
             try:
                 profiles = []
+                profile_messages = [m for m in self.message_logs if m.get('is_profile')]
+                
+                # Get profiles from bot handlers if available
                 if hasattr(self.bot_handlers, 'generated_profiles'):
                     for prof_id, prof_data in self.bot_handlers.generated_profiles.items():
                         profiles.append({
                             'id': prof_id,
                             'name': prof_data.get('name', 'Unknown'),
                             'type': 'UK Profile',
-                            'created': datetime.now().isoformat(),
-                            'postcode': prof_data.get('address', {}).get('postcode', 'N/A') if isinstance(prof_data.get('address'), dict) else 'N/A'
+                            'created': prof_data.get('generated_at', datetime.now().isoformat()),
+                            'postcode': prof_data.get('postcode', 'N/A'),
+                            'age': prof_data.get('age', 'N/A'),
+                            'city': prof_data.get('city', 'N/A')
                         })
+                
+                # If no stored profiles, show sample data
+                if not profiles:
+                    profiles = [{
+                        'id': 'sample_1',
+                        'name': 'Profile Generator Ready',
+                        'type': 'UK Profile System',
+                        'created': datetime.now().isoformat(),
+                        'postcode': 'System Ready',
+                        'age': 'N/A',
+                        'city': 'Use profile generation commands to create real data'
+                    }]
                 
                 return jsonify({
                     'profiles': profiles,
@@ -417,47 +465,48 @@ class BotDashboard:
 
         @self.app.route('/api/clone-company', methods=['POST'])
         def api_clone_company():
-            """Handle company information lookup with realistic business data"""
+            """Handle company information lookup with real Companies House data"""
             try:
+                from companies_house_api import CompaniesHouseAPI
+                
                 data = request.get_json()
                 company_name = data.get('company_name', data.get('company', 'Unknown Company'))
                 
                 if not company_name or company_name.strip() == '':
                     return jsonify({'success': False, 'error': 'Company name is required'}), 400
                 
-                # Generate realistic business information
-                business_info = self._generate_realistic_business_info(company_name)
+                # Use real Companies House API
+                companies_house = CompaniesHouseAPI()
+                company_info = companies_house.lookup_company_comprehensive(company_name)
                 
-                # Store the company info
-                if hasattr(self.bot_handlers, 'company_profiles'):
+                # Store the real company info
+                if company_info.get('success') and hasattr(self.bot_handlers, 'company_profiles'):
                     clone_id = len(self.bot_handlers.company_profiles) + 1
                     self.bot_handlers.company_profiles[clone_id] = {
-                        'company_name': company_name,
-                        'business_type': business_info['business_type'],
-                        'industry': business_info['industry'],
+                        'company_name': company_info.get('company_name', company_name),
+                        'company_number': company_info.get('company_number', ''),
+                        'business_type': company_info.get('company_type', 'Unknown'),
+                        'industry': company_info.get('industry', 'Unknown'),
                         'created': datetime.now().isoformat(),
-                        'status': 'Active',
-                        'full_info': business_info
+                        'status': company_info.get('company_status', 'Unknown'),
+                        'full_info': company_info
                     }
                 
-                return jsonify({
-                    'success': True,
-                    'company_name': company_name,
-                    **business_info
-                })
+                return jsonify(company_info)
                 
+            except ImportError:
+                logger.error("Companies House API module not available")
+                return jsonify({
+                    'success': False,
+                    'error': 'Companies House API integration not available',
+                    'company_name': company_name
+                }), 500
             except Exception as e:
                 logger.error(f"Company lookup API error: {e}")
                 return jsonify({
                     'success': False,
                     'error': str(e),
-                    'company_name': company_name if 'company_name' in locals() else 'Unknown',
-                    'registered_address': 'Unable to retrieve information',
-                    'business_type': 'Unknown',
-                    'industry': 'Unknown',
-                    'directors': 'Information unavailable',
-                    'contact_email': 'Not available',
-                    'contact_phone': 'Not available'
+                    'company_name': company_name if 'company_name' in locals() else 'Unknown'
                 }), 500
 
         @self.app.route('/api/health')
@@ -501,29 +550,24 @@ class BotDashboard:
             """Get conversation messages with enhanced formatting"""
             try:
                 messages = []
-                if hasattr(self.bot_handlers, 'conversations'):
-                    for user_id, conversation in self.bot_handlers.conversations.items():
-                        username = f"user_{user_id}"
-                        for i, msg in enumerate(conversation):
-                            # Get AI model used (simplified lookup)
-                            model_used = self.bot_handlers.user_models.get(user_id, 'assistant')
-                            model_info = self.bot_handlers.config.AI_MODELS.get(model_used, {})
+                # Use message_logs from dashboard instead of bot_handlers conversations
+                for i, log_entry in enumerate(list(self.message_logs)[-50:]):
+                    messages.append({
+                        'id': f"msg_{i}",
+                        'user_id': log_entry.get('user_id', 0),
+                        'username': log_entry.get('username', 'Unknown'),
+                        'message': log_entry.get('message', '')[:200] + ('...' if len(log_entry.get('message', '')) > 200 else ''),
+                        'response': log_entry.get('response', '')[:200] + ('...' if len(log_entry.get('response', '')) > 200 else ''),
+                        'role': 'user',
+                        'timestamp': log_entry.get('timestamp', datetime.now().isoformat()),
+                        'ai_model': log_entry.get('ai_model', 'Unknown'),
+                        'model_emoji': '🤖',
+                        'response_time': log_entry.get('response_time', 0)
+                    })
 
-                            messages.append({
-                                'id': f"{user_id}_{i}",
-                                'user_id': user_id,
-                                'username': username,
-                                'message': msg.get('content', '')[:200] + ('...' if len(msg.get('content', '')) > 200 else ''),
-                                'response': 'AI response processed',
-                                'role': msg.get('role', 'user'),
-                                'timestamp': datetime.now().isoformat(),
-                                'ai_model': model_info.get('name', 'Unknown'),
-                                'model_emoji': model_info.get('emoji', '🤖')
-                            })
-
-                # Sort by most recent and limit
+                # Sort by most recent
                 messages.sort(key=lambda x: x['timestamp'], reverse=True)
-                return jsonify(messages[:50])
+                return jsonify(messages)
             except Exception as e:
                 logger.error(f"Error getting messages: {e}")
                 return jsonify([])

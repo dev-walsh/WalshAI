@@ -26,6 +26,9 @@ class Config:
         )
         self.DEEPSEEK_MODEL = self._get_env_var('DEEPSEEK_MODEL', 'deepseek-chat')
         
+        # Companies House API Configuration
+        self.COMPANIES_HOUSE_API_KEY = self._get_env_var('COMPANIES_HOUSE_API_KEY', '')
+        
         # Performance Configuration
         self.MAX_MESSAGE_LENGTH = self._get_env_int('MAX_MESSAGE_LENGTH', 3000)
         self.MAX_CONVERSATION_HISTORY = self._get_env_int('MAX_CONVERSATION_HISTORY', 6)
