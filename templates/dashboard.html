@@ -358,8 +358,19 @@
                             <h5>🎣 Phishing Analysis</h5>
                         </div>
                         <div class="card-body">
-                            <textarea id="phishing-message" class="form-control mb-3" rows="4" placeholder="Paste suspicious message here..."></textarea>
-                            <input type="email" id="sender-email" class="form-control mb-3" placeholder="Sender email (optional)">
+                            <div class="alert alert-warning mb-3">
+                                <h6>📋 Quick Guide - Phishing Detection</h6>
+                                <p><strong>UK Scam Examples to Test:</strong></p>
+                                <ul class="mb-2">
+                                    <li><strong>Banking:</strong> "HSBC: Your account is suspended. Click here to verify: bit.ly/hsbc-verify"</li>
+                                    <li><strong>HMRC:</strong> "HMRC: You have a tax refund of £850 waiting. Claim now or expire in 24 hours"</li>
+                                    <li><strong>Royal Mail:</strong> "Royal Mail: Package delivery failed. Pay £2.99 fee: shortlink.com/rm-pay"</li>
+                                    <li><strong>Energy:</strong> "British Gas: Your account is £45 in credit. Claim your refund urgently"</li>
+                                </ul>
+                                <p><strong>🚨 Detection Features:</strong> Urgency language, suspicious links, financial triggers</p>
+                            </div>
+                            <textarea id="phishing-message" class="form-control mb-3" rows="4" placeholder="e.g. HSBC: Your account security has been compromised. Verify immediately to avoid suspension: bit.ly/hsbc-urgent"></textarea>
+                            <input type="email" id="sender-email" class="form-control mb-3" placeholder="e.g. no-reply@hsbc-security.tk (suspicious domain)">
                             <button class="btn btn-warning" onclick="analyzePhishing()">Analyze Threat</button>
                             <div id="phishing-result" class="mt-3"></div>
                         </div>
@@ -371,16 +382,27 @@
                             <h5>📧 Mass Email Tools</h5>
                         </div>
                         <div class="card-body">
+                            <div class="alert alert-success mb-3">
+                                <h6>📋 Quick Guide - Mass Email</h6>
+                                <p><strong>UK Business Examples:</strong></p>
+                                <ul class="mb-2">
+                                    <li><strong>Subject:</strong> "Q1 Property Portfolio Update - WalshAI Estate Agents"</li>
+                                    <li><strong>Body:</strong> "Dear {client}, your property at {address} has increased in value by 12% this quarter..."</li>
+                                    <li><strong>Recipients:</strong> john.smith@btinternet.com, sarah.jones@gmail.com</li>
+                                </ul>
+                                <p><strong>🔐 Security:</strong> Use Gmail App Passwords, not regular passwords</p>
+                                <p><strong>📧 Format:</strong> One email per line, professional content only</p>
+                            </div>
                             <select id="email-provider" class="form-control mb-2">
                                 <option value="gmail">Gmail</option>
-                                <option value="outlook">Outlook</option>
-                                <option value="yahoo">Yahoo</option>
+                                <option value="outlook">Outlook/Hotmail</option>
+                                <option value="yahoo">Yahoo Mail</option>
                             </select>
-                            <input type="email" id="mass-sender-email" class="form-control mb-2" placeholder="Your email">
-                            <input type="password" id="mass-sender-password" class="form-control mb-2" placeholder="App password">
-                            <textarea id="recipients-list" class="form-control mb-2" rows="3" placeholder="Recipients (one per line)"></textarea>
-                            <input type="text" id="email-subject" class="form-control mb-2" placeholder="Subject">
-                            <textarea id="email-body" class="form-control mb-2" rows="3" placeholder="Message body"></textarea>
+                            <input type="email" id="mass-sender-email" class="form-control mb-2" placeholder="e.g. yourname@gmail.com">
+                            <input type="password" id="mass-sender-password" class="form-control mb-2" placeholder="Gmail App Password (not regular password)">
+                            <textarea id="recipients-list" class="form-control mb-2" rows="3" placeholder="e.g.&#10;john.smith@btinternet.com&#10;sarah.jones@gmail.com&#10;michael.brown@outlook.com"></textarea>
+                            <input type="text" id="email-subject" class="form-control mb-2" placeholder="e.g. Monthly Property Update - January 2025">
+                            <textarea id="email-body" class="form-control mb-2" rows="3" placeholder="e.g. Dear Client,&#10;&#10;We hope this email finds you well. We're pleased to share your monthly property portfolio update...&#10;&#10;Best regards,&#10;WalshAI Team"></textarea>
                             <button class="btn btn-primary" onclick="sendMassEmail()">Send Campaign</button>
                             <div id="email-result" class="mt-3"></div>
                         </div>
@@ -394,22 +416,37 @@
                             <h5>📱 SMS Gateway (Email-to-SMS)</h5>
                         </div>
                         <div class="card-body">
+                            <div class="alert alert-info mb-3">
+                                <h6>📋 Quick Guide - SMS Gateway</h6>
+                                <p><strong>UK Examples:</strong></p>
+                                <ul class="mb-2">
+                                    <li><strong>Vodafone UK:</strong> 07700123456 → vodafone_uk</li>
+                                    <li><strong>EE UK:</strong> 07800987654 → ee_uk</li>
+                                    <li><strong>Three UK:</strong> 07123456789 → three_uk</li>
+                                    <li><strong>O2 UK:</strong> 07987654321 → o2_uk</li>
+                                </ul>
+                                <p><strong>⚙️ Setup Required:</strong> Gmail/Outlook credentials in email section above</p>
+                                <p><strong>📝 Format:</strong> UK mobile numbers (07xxxxxxxxx), max 160 characters</p>
+                            </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="tel" id="sms-phone" class="form-control mb-2" placeholder="Phone number">
+                                    <input type="tel" id="sms-phone" class="form-control mb-2" placeholder="e.g. 07700123456">
                                     <select id="sms-carrier" class="form-control mb-2">
-                                        <option value="verizon">Verizon</option>
-                                        <option value="att">AT&T</option>
-                                        <option value="tmobile">T-Mobile</option>
-                                        <option value="sprint">Sprint</option>
                                         <option value="vodafone_uk">Vodafone UK</option>
                                         <option value="ee_uk">EE UK</option>
                                         <option value="three_uk">Three UK</option>
                                         <option value="o2_uk">O2 UK</option>
+                                        <option value="verizon">Verizon (US)</option>
+                                        <option value="att">AT&T (US)</option>
+                                        <option value="tmobile">T-Mobile (US)</option>
+                                        <option value="sprint">Sprint (US)</option>
                                     </select>
                                 </div>
                                 <div class="col-md-8">
-                                    <textarea id="sms-message" class="form-control mb-2" rows="3" placeholder="SMS message (max 160 chars)" maxlength="160"></textarea>
+                                    <textarea id="sms-message" class="form-control mb-2" rows="3" placeholder="e.g. Hello from WalshAI! Your verification code is 123456." maxlength="160"></textarea>
+                                    <div class="mb-2">
+                                        <small class="text-muted">Characters: <span id="char-count">0</span>/160</small>
+                                    </div>
                                     <button class="btn btn-success" onclick="sendSMS()">Send SMS</button>
                                     <div id="sms-result" class="mt-2"></div>
                                 </div>
@@ -1076,13 +1113,33 @@
             });
         }
 
+        // Add character counter for SMS
+        document.addEventListener('DOMContentLoaded', function() {
+            const smsMessage = document.getElementById('sms-message');
+            const charCount = document.getElementById('char-count');
+            
+            if (smsMessage && charCount) {
+                smsMessage.addEventListener('input', function() {
+                    const count = this.value.length;
+                    charCount.textContent = count;
+                    charCount.style.color = count > 140 ? '#dc3545' : count > 120 ? '#ffc107' : '#28a745';
+                });
+            }
+        });
+
         function sendSMS() {
             const phone = document.getElementById('sms-phone').value;
             const carrier = document.getElementById('sms-carrier').value;
             const message = document.getElementById('sms-message').value;
-             const senderEmail = document.getElementById('mass-sender-email').value;
+            const senderEmail = document.getElementById('mass-sender-email').value;
             const senderPassword = document.getElementById('mass-sender-password').value;
             const provider = document.getElementById('email-provider').value;
+
+            // Validate UK phone number format
+            if (carrier.includes('uk') && phone && !phone.match(/^07\d{9}$/)) {
+                showAlert('UK mobile numbers should be in format 07xxxxxxxxx (11 digits total)', 'error');
+                return;
+            }
 
             if (!phone || !message || !senderEmail || !senderPassword) {
                 showAlert('Please fill in all required fields including email credentials', 'error');

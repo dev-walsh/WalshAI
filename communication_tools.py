@@ -33,13 +33,23 @@ class PhishingDetector:
             'urgent', 'verify account', 'suspended', 'click here',
             'limited time', 'act now', 'congratulations', 'winner',
             'free money', 'claim now', 'security alert', 'update payment',
-            'confirm identity', 'avoid suspension', 'immediate action'
+            'confirm identity', 'avoid suspension', 'immediate action',
+            # UK-specific patterns
+            'hmrc', 'tax refund', 'royal mail', 'delivery failed',
+            'tv licence', 'council tax', 'parking fine', 'speeding ticket',
+            'nhs', 'prescription ready', 'appointment cancelled',
+            'energy bill', 'british gas', 'scottish power', 'eon'
         ]
         
         self.financial_triggers = [
             'bank account', 'credit card', 'paypal', 'bitcoin',
             'cryptocurrency', 'investment opportunity', 'tax refund',
-            'inheritance', 'lottery', 'prize money', 'wire transfer'
+            'inheritance', 'lottery', 'prize money', 'wire transfer',
+            # UK financial institutions
+            'hsbc', 'barclays', 'lloyds', 'natwest', 'halifax', 'santander',
+            'nationwide', 'tesco bank', 'first direct', 'monzo', 'starling',
+            'revolut', 'wise', 'sort code', 'bacs payment', 'faster payment',
+            'standing order', 'direct debit', 'isa account', 'pension fund'
         ]
     
     def analyze_message(self, message: str, sender_email: str = None) -> Dict[str, Any]:
@@ -308,10 +318,10 @@ class SMSGateway:
             'boost': '@smsmyboostmobile.com',
             'cricket': '@sms.cricketwireless.net',
             'uscellular': '@email.uscc.net',
-            'vodafone_uk': '@vodafone.co.uk',
-            'ee_uk': '@mms.ee.co.uk',
+            'vodafone_uk': '@sms.vodafone.net',
+            'ee_uk': '@mms.ee.co.uk', 
             'three_uk': '@3.co.uk',
-            'o2_uk': '@o2.co.uk'
+            'o2_uk': '@mmail.co.uk'
         }
     
     def send_sms_via_email(self, smtp_config: Dict, sender_email: str, sender_password: str,
