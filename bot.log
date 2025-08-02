@@ -2830,3 +2830,77 @@ task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at
 2025-08-02 13:19:23,762 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:23] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 13:19:53,756 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:53] "GET /api/investigations HTTP/1.1" 200 -
 2025-08-02 13:19:53,760 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:53] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:20:23,740 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:20:23] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:20:23,744 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:20:23] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:20:53,746 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:20:53] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:20:53,751 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:20:53] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:21:23,746 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:23] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:21:23,750 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:23] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:21:24,929 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:24] "GET / HTTP/1.1" 200 -
+2025-08-02 13:21:25,714 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:25] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:21:25,716 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:25] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:21:28,520 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:28] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:21:29,112 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:29] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:21:55,729 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:55] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:21:55,732 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:21:55] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:22:25,733 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:22:25] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:22:25,736 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:22:25] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:22:55,725 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:22:55] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:22:55,727 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:22:55] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:23:25,724 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:23:25] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:23:25,729 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:23:25] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:23:55,741 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:23:55] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:23:55,743 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:23:55] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:23:59,332 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:23:59] "GET / HTTP/1.1" 200 -
+2025-08-02 13:24:16,565 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:24:16] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:24:16,570 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:24:16] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:24:46,569 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:24:46] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:24:46,572 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:24:46] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:24:55,729 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 13:24:55,730 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 13:24:55,740 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 13:24:56,543 - config - INFO - Configuration validation successful
+2025-08-02 13:24:56,559 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 13:24:56,560 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 13:24:56,796 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 13:24:56,796 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 13:25:00,742 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 13:25:00,742 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 13:25:00,744 - csv_exporter - INFO - Created export directory: exports
+2025-08-02 13:25:00,758 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 13:25:00,762 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 13:25:00,763 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 13:25:00,763 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 13:25:00,764 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.66.162:5000
+2025-08-02 13:25:00,764 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 13:25:01,239 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:25:01] "GET / HTTP/1.1" 200 -
+2025-08-02 13:25:03,257 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 13:25:03,257 - telegram.ext._application - INFO - Application started
+2025-08-02 14:26:22,584 - config - INFO - Configuration validation successful
+2025-08-02 14:26:22,687 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 14:26:22,687 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 14:26:22,896 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 14:26:22,896 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 14:26:26,638 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 14:26:26,694 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 14:26:26,695 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 14:26:26,695 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 14:26:26,695 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 14:26:27,582 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.225:5000
+2025-08-02 14:26:27,583 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 14:26:28,823 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getMe "HTTP/1.1 200 OK"
+2025-08-02 14:26:28,849 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-02 14:26:28,850 - telegram.ext.Application - INFO - Application started
+2025-08-02 14:26:38,926 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 14:26:48,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 14:26:59,008 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 14:27:09,044 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 14:27:13,918 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 14:27:13,919 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-02 14:27:13,919 - telegram.ext.Application - INFO - Application.stop() complete
