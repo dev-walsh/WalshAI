@@ -66,11 +66,11 @@ def main():
 
         # Start web dashboard in a separate thread
         dashboard_thread = threading.Thread(
-            target=lambda: dashboard.app.run(host='0.0.0.0', port=8080, debug=False, use_reloader=False),
+            target=lambda: dashboard.app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False),
             daemon=True
         )
         dashboard_thread.start()
-        logger.info("Web Dashboard started on http://0.0.0.0:8080")
+        logger.info("Web Dashboard started on http://0.0.0.0:5000")
 
         # Register handlers
         application.add_handler(CommandHandler("start", bot_handlers.start_command))
@@ -88,7 +88,7 @@ def main():
         application.add_error_handler(bot_handlers.error_handler)
 
         logger.info("Starting WalshAI Multi-Expert AI Bot...")
-        logger.info("Dashboard available at: http://localhost:8080")
+        logger.info("Dashboard available at: http://localhost:5000")
 
         # Give dashboard a moment to start
         time.sleep(2)
