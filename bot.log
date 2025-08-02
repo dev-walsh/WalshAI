@@ -2168,3 +2168,46 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:01:53,280 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
 2025-08-02 12:01:58,953 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:01:58] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:02:03,428 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 12:03:40,152 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:03:40,163 - deepseek_client - INFO - Basic network connectivity to DeepSeek API confirmed
+2025-08-02 12:03:40,163 - deepseek_client - INFO - Sending optimized request to DeepSeek API (2 messages)
+2025-08-02 12:03:43,580 - deepseek_client - INFO - API request completed in 3.42s
+2025-08-02 12:03:43,581 - deepseek_client - INFO - Successfully received response (36 chars)
+2025-08-02 12:03:43,581 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:03:43,587 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:03:43,588 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:03:43,588 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:03:43,592 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.87.2:5000
+2025-08-02 12:03:43,592 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:03:44,145 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 12:03:44] "GET / HTTP/1.1" 200 -
+2025-08-02 13:04:07,239 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 13:04:07,506 - deepseek_client - INFO - Basic network connectivity to DeepSeek API confirmed
+2025-08-02 13:04:07,506 - deepseek_client - INFO - Sending optimized request to DeepSeek API (2 messages)
+2025-08-02 13:04:11,712 - deepseek_client - INFO - API request completed in 4.21s
+2025-08-02 13:04:11,712 - deepseek_client - INFO - Successfully received response (36 chars)
+2025-08-02 13:04:11,716 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 13:04:11,716 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 13:04:11,716 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 13:04:12,552 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.225:5000
+2025-08-02 13:04:12,552 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 13:04:13,831 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getMe "HTTP/1.1 200 OK"
+2025-08-02 13:04:13,855 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-02 13:04:13,856 - telegram.ext.Application - INFO - Application started
+2025-08-02 13:04:18,058 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:18,058 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 13:04:23,732 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:23,732 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 13:04:30,661 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:30,661 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 13:04:36,455 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:36,455 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 13:04:45,359 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:45,359 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 13:04:58,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-02 13:04:58,518 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
