@@ -96,37 +96,27 @@ class BotHandlers:
             )
             return
         
-        # Create advanced button menu with tools
+        # Create clean button menu with AI Experts
         keyboard = []
         
-        # AI Experts selection buttons (2 per row)
-        model_buttons = []
-        for model_id, model_info in self.config.AI_MODELS.items():
-            button_text = f"{model_info['emoji']} {model_info['name']}"
-            model_buttons.append(InlineKeyboardButton(button_text, callback_data=f"model_{model_id}"))
-            
-            if len(model_buttons) == 2:
-                keyboard.append(model_buttons)
-                model_buttons = []
-        
-        # Add remaining button if odd number
-        if model_buttons:
-            keyboard.append(model_buttons)
-        
-        # Advanced Tools Row
+        # AI Experts selection (2 per row for clean layout)
         keyboard.append([
-            InlineKeyboardButton("🔍 Investigation Tools", callback_data="tools_investigation"),
-            InlineKeyboardButton("🏗️ Property Tools", callback_data="tools_property")
+            InlineKeyboardButton("🔍 Financial Expert", callback_data="model_financial"),
+            InlineKeyboardButton("🤖 General Assistant", callback_data="model_assistant")
         ])
         
         keyboard.append([
-            InlineKeyboardButton("🏢 Company Analysis", callback_data="tools_company"),
-            InlineKeyboardButton("🚨 Scam Database", callback_data="tools_scam")
+            InlineKeyboardButton("🏗️ Property Expert", callback_data="model_property"),
+            InlineKeyboardButton("🏢 Company Expert", callback_data="model_cloner")
         ])
         
         keyboard.append([
-            InlineKeyboardButton("🆔 Profile Generator", callback_data="tools_profile"),
-            InlineKeyboardButton("📈 Marketing Suite", callback_data="tools_marketing")
+            InlineKeyboardButton("📈 Marketing Expert", callback_data="model_marketing"),
+            InlineKeyboardButton("🚨 Scam Expert", callback_data="model_scam_search")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("🆔 Profile Generator", callback_data="model_profile_gen")
         ])
         
         # Utility buttons
@@ -182,8 +172,9 @@ class BotHandlers:
         
         if query.data.startswith("model_"):
             await self.handle_model_change(query, user_id)
-        elif query.data.startswith("tools_"):
-            await self.handle_tool_selection(query, user_id)
+        elif query.data == "back_main":
+            # Return to main menu
+            await self.start_command_callback(query, user_id)
         elif query.data == "help":
             await self.handle_help_callback(query, update)
         elif query.data == "clear":
@@ -630,6 +621,58 @@ class BotHandlers:
             parse_mode=ParseMode.MARKDOWN
         )
     
+    async def start_command_callback(self, query, user_id):
+        """Handle return to main menu from callback"""
+        current_model = self.user_models[user_id]
+        model_info = self.config.AI_MODELS[current_model]
+        
+        # Same keyboard as start_command but for callback
+        keyboard = []
+        
+        keyboard.append([
+            InlineKeyboardButton("🔍 Financial Expert", callback_data="model_financial"),
+            InlineKeyboardButton("🤖 General Assistant", callback_data="model_assistant")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("🏗️ Property Expert", callback_data="model_property"),
+            InlineKeyboardButton("🏢 Company Expert", callback_data="model_cloner")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("📈 Marketing Expert", callback_data="model_marketing"),
+            InlineKeyboardButton("🚨 Scam Expert", callback_data="model_scam_search")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("🆔 Profile Generator", callback_data="model_profile_gen")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("📋 Help", callback_data="help"),
+            InlineKeyboardButton("🗑️ Clear History", callback_data="clear")
+        ])
+        
+        keyboard.append([
+            InlineKeyboardButton("🔄 Current Expert", callback_data="current"),
+            InlineKeyboardButton("🌐 Dashboard", url="http://0.0.0.0:5000")
+        ])
+        
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        
+        welcome_message = (
+            f"🎯 *Welcome to WalshAI Professional Suite!*\n\n"
+            f"Your comprehensive AI toolkit with expert capabilities.\n\n"
+            f"*Current Expert:* {model_info['emoji']} {model_info['name']}\n\n"
+            f"Choose an expert below and start chatting! 🚀"
+        )
+        
+        await query.edit_message_text(
+            welcome_message, 
+            reply_markup=reply_markup,
+            parse_mode=ParseMode.MARKDOWN
+        )
+    
     async def handle_help_callback(self, query, update):
         """Handle help button callback"""
         help_message = (
@@ -787,15 +830,16 @@ class BotHandlers:
                 # Enhanced error message for connection issues
                 if response.startswith('🌐') or response.startswith('🔒'):
                     enhanced_error = (
-                        f"{response}\n\n"
-                        "**🔧 Troubleshooting Steps:**\n"
-                        "1. Check your internet connection\n"
+                        f"🔧 **Connection Issue Detected**\n\n"
+                        "The AI service is temporarily unavailable. This could be due to:\n"
+                        "• DeepSeek API credits may be low\n"
+                        "• Network connectivity issues\n"
+                        "• API service maintenance\n\n"
+                        "**Quick Solutions:**\n"
+                        "1. Check your DeepSeek credits at platform.deepseek.com\n"
                         "2. Try again in a few moments\n"
-                        "3. Use /start to access tools menu\n\n"
-                        "**💡 Alternative:** Use offline tools while connection is restored\n"
-                        "- Profile Generator\n"
-                        "- Document Templates\n"
-                        "- Analysis Frameworks"
+                        "3. Use /start to access the menu\n\n"
+                        "**Status:** AI experts will be restored once connection is reestablished."
                     )
                     await update.message.reply_text(enhanced_error, parse_mode=ParseMode.MARKDOWN)
                 else:
