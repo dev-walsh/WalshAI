@@ -2211,3 +2211,5 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 13:04:45,359 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
 2025-08-02 13:04:58,518 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 409 Conflict"
 2025-08-02 13:04:58,518 - bot_handlers - ERROR - Professional system error: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-02 12:24:10,495 - config - INFO - Configuration validation successful
+2025-08-02 12:24:10,539 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
