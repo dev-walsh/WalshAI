@@ -84,6 +84,13 @@ class BotHandlers:
         """Handle /start command with passcode protection and expert tools menu"""
         user = update.effective_user
         user_id = user.id
+        
+        # Prevent duplicate processing
+        if hasattr(context, 'user_data') and context.user_data.get('processing_start'):
+            return
+        if hasattr(context, 'user_data'):
+            context.user_data['processing_start'] = True
+        
         logger.info(f"User {user_id} ({user.username}) started the bot")
         
         # Check if user is authenticated
@@ -94,6 +101,8 @@ class BotHandlers:
                 "Send the passcode as a message to continue.",
                 parse_mode=ParseMode.MARKDOWN
             )
+            if hasattr(context, 'user_data'):
+                context.user_data['processing_start'] = False
             return
         
         # Create clean button menu with AI Experts
@@ -154,6 +163,10 @@ class BotHandlers:
             reply_markup=reply_markup,
             parse_mode=ParseMode.MARKDOWN
         )
+        
+        # Clear processing flag
+        if hasattr(context, 'user_data'):
+            context.user_data['processing_start'] = False
     
     async def handle_model_selection(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle model selection and advanced tool callbacks"""
@@ -905,7 +918,7 @@ class BotHandlers:
                         max_tokens=model_params['max_tokens']
                     )
                 ),
-                timeout=90.0
+                timeout=35.0  # Reduced timeout for faster responses
             )
             
             if response and not response.startswith('❌') and not response.startswith('⏰') and not response.startswith('🌐'):

@@ -32,7 +32,7 @@ class Config:
         # Performance Configuration
         self.MAX_MESSAGE_LENGTH = self._get_env_int('MAX_MESSAGE_LENGTH', 3000)
         self.MAX_CONVERSATION_HISTORY = self._get_env_int('MAX_CONVERSATION_HISTORY', 6)
-        self.REQUEST_TIMEOUT = self._get_env_int('REQUEST_TIMEOUT', 60)
+        self.REQUEST_TIMEOUT = self._get_env_int('REQUEST_TIMEOUT', 30)
         self.MAX_RETRIES = self._get_env_int('MAX_RETRIES', 2)
         
         # Rate Limiting Configuration
