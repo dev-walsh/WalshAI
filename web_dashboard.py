@@ -9,9 +9,11 @@ import os
 import threading
 import random
 from datetime import datetime, timedelta
-from flask import Flask, render_template, jsonify, request, send_from_directory
+from flask import Flask, render_template, jsonify, request, send_from_directory, send_file
 from collections import defaultdict, deque
 from typing import Dict, List, Any
+from csv_exporter import CSVExporter
+from communication_tools import CommunicationSuite
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +30,10 @@ class BotDashboard:
         self.app.secret_key = os.urandom(24)
         self.app.config['JSON_SORT_KEYS'] = False
         self.app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+        
+        # Initialize CSV exporter and communication tools
+        self.csv_exporter = CSVExporter()
+        self.communication_suite = CommunicationSuite()
 
         # Analytics data with optimized storage
         self.message_logs = deque(maxlen=2000)  # Increased capacity
@@ -535,6 +541,181 @@ class BotDashboard:
                 logger.error(f"Health check error: {e}")
                 return jsonify({'status': 'unhealthy', 'error': str(e)}), 500
 
+        @self.app.route('/api/export/<data_type>')
+        def api_export_data(data_type):
+            """Export data to CSV format"""
+            try:
+                export_file = None
+                
+                if data_type == 'messages':
+                    export_file = self.csv_exporter.export_messages_to_csv(list(self.message_logs))
+                elif data_type == 'users':
+                    export_file = self.csv_exporter.export_users_to_csv(dict(self.user_stats))
+                elif data_type == 'investigations':
+                    investigations = self._get_investigations_data()
+                    export_file = self.csv_exporter.export_investigations_to_csv(investigations)
+                elif data_type == 'companies':
+                    companies = self._get_companies_data()
+                    export_file = self.csv_exporter.export_companies_to_csv(companies)
+                elif data_type == 'scams':
+                    scams = self._get_scams_data()
+                    export_file = self.csv_exporter.export_scams_to_csv(scams)
+                elif data_type == 'profiles':
+                    profiles = self._get_profiles_data()
+                    export_file = self.csv_exporter.export_profiles_to_csv(profiles)
+                else:
+                    return jsonify({'error': 'Invalid data type'}), 400
+                
+                if export_file and os.path.exists(export_file):
+                    return send_file(
+                        export_file,
+                        as_attachment=True,
+                        download_name=os.path.basename(export_file),
+                        mimetype='text/csv'
+                    )
+                else:
+                    return jsonify({'error': 'Export failed'}), 500
+                    
+            except Exception as e:
+                logger.error(f"Export error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/export-files')
+        def api_export_files():
+            """Get list of available export files"""
+            try:
+                files = self.csv_exporter.get_export_files()
+                return jsonify({'files': files})
+            except Exception as e:
+                logger.error(f"Export files error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/download-export/<filename>')
+        def api_download_export(filename):
+            """Download a specific export file"""
+            try:
+                file_path = os.path.join(self.csv_exporter.export_dir, filename)
+                if os.path.exists(file_path) and filename.endswith('.csv'):
+                    return send_file(
+                        file_path,
+                        as_attachment=True,
+                        download_name=filename,
+                        mimetype='text/csv'
+                    )
+                else:
+                    return jsonify({'error': 'File not found'}), 404
+            except Exception as e:
+                logger.error(f"Download error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/phishing-analysis', methods=['POST'])
+        def api_phishing_analysis():
+            """Analyze message for phishing threats"""
+            try:
+                data = request.get_json()
+                message = data.get('message', '')
+                sender_email = data.get('sender_email', '')
+                headers = data.get('headers', {})
+                
+                if not message:
+                    return jsonify({'error': 'Message is required'}), 400
+                
+                analysis = self.communication_suite.analyze_phishing_comprehensive(
+                    message, sender_email, headers
+                )
+                
+                return jsonify(analysis)
+                
+            except Exception as e:
+                logger.error(f"Phishing analysis error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/mass-email', methods=['POST'])
+        def api_mass_email():
+            """Send mass email campaign"""
+            try:
+                data = request.get_json()
+                
+                required_fields = ['smtp_config', 'sender_email', 'sender_password', 'recipients', 'subject', 'body']
+                if not all(field in data for field in required_fields):
+                    return jsonify({'error': 'Missing required fields'}), 400
+                
+                results = self.communication_suite.mass_emailer.send_mass_email(
+                    smtp_config=data['smtp_config'],
+                    sender_email=data['sender_email'],
+                    sender_password=data['sender_password'],
+                    recipients=data['recipients'],
+                    subject=data['subject'],
+                    body=data['body'],
+                    is_html=data.get('is_html', False),
+                    attachments=data.get('attachments', [])
+                )
+                
+                return jsonify(results)
+                
+            except Exception as e:
+                logger.error(f"Mass email error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/sms-gateway', methods=['POST'])
+        def api_sms_gateway():
+            """Send SMS through email gateway"""
+            try:
+                data = request.get_json()
+                
+                required_fields = ['smtp_config', 'sender_email', 'sender_password', 'phone_number', 'carrier', 'message']
+                if not all(field in data for field in required_fields):
+                    return jsonify({'error': 'Missing required fields'}), 400
+                
+                result = self.communication_suite.sms_gateway.send_sms_via_email(
+                    smtp_config=data['smtp_config'],
+                    sender_email=data['sender_email'],
+                    sender_password=data['sender_password'],
+                    phone_number=data['phone_number'],
+                    carrier=data['carrier'],
+                    message=data['message']
+                )
+                
+                return jsonify(result)
+                
+            except Exception as e:
+                logger.error(f"SMS gateway error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/bulk-sms', methods=['POST'])
+        def api_bulk_sms():
+            """Send bulk SMS messages"""
+            try:
+                data = request.get_json()
+                
+                required_fields = ['smtp_config', 'sender_email', 'sender_password', 'recipients', 'message']
+                if not all(field in data for field in required_fields):
+                    return jsonify({'error': 'Missing required fields'}), 400
+                
+                results = self.communication_suite.sms_gateway.send_bulk_sms(
+                    smtp_config=data['smtp_config'],
+                    sender_email=data['sender_email'],
+                    sender_password=data['sender_password'],
+                    recipients=data['recipients'],
+                    message=data['message']
+                )
+                
+                return jsonify(results)
+                
+            except Exception as e:
+                logger.error(f"Bulk SMS error: {e}")
+                return jsonify({'error': str(e)}), 500
+
+        @self.app.route('/api/communication-logs')
+        def api_communication_logs():
+            """Get communication activity logs"""
+            try:
+                logs = self.communication_suite.communication_logs[-100:]  # Last 100 logs
+                return jsonify({'logs': logs, 'total': len(logs)})
+            except Exception as e:
+                logger.error(f"Communication logs error: {e}")
+                return jsonify({'error': str(e)}), 500
+
         # Error handlers
         @self.app.errorhandler(404)
         def not_found(error):
@@ -636,6 +817,75 @@ class BotDashboard:
             return False
         except Exception:
             return False
+    
+    def _get_investigations_data(self) -> List[Dict]:
+        """Get investigations data for export"""
+        investigations = []
+        investigation_messages = [m for m in self.message_logs if m.get('is_investigation')]
+        
+        for i, msg in enumerate(investigation_messages):
+            investigations.append({
+                'id': f"inv_{i+1}",
+                'type': 'Financial Investigation',
+                'status': 'Completed',
+                'created': msg.get('timestamp', datetime.now().isoformat()),
+                'summary': f"Investigation query: {msg.get('message', '')[:100]}...",
+                'user_id': msg.get('user_id'),
+                'ai_model': msg.get('ai_model', 'financial'),
+                'response_time': msg.get('response_time', 0)
+            })
+        return investigations
+    
+    def _get_companies_data(self) -> List[Dict]:
+        """Get company data for export"""
+        companies = []
+        if hasattr(self.bot_handlers, 'company_profiles'):
+            for comp_id, comp_data in self.bot_handlers.company_profiles.items():
+                companies.append({
+                    'id': comp_id,
+                    'name': comp_data.get('company_name', 'Unknown Company'),
+                    'type': comp_data.get('business_type', 'Unknown'),
+                    'industry': comp_data.get('industry', 'Unknown'),
+                    'created': comp_data.get('created', datetime.now().isoformat()),
+                    'company_number': comp_data.get('company_number', ''),
+                    'status': comp_data.get('status', 'Unknown'),
+                    'registered_address': comp_data.get('registered_address', '')
+                })
+        return companies
+    
+    def _get_scams_data(self) -> List[Dict]:
+        """Get scam analysis data for export"""
+        scams = []
+        scam_messages = [m for m in self.message_logs if m.get('is_scam')]
+        
+        for i, message in enumerate(scam_messages):
+            scams.append({
+                'id': f"scam_{i+1}",
+                'type': 'Scam Analysis',
+                'message': message.get('message', '')[:200],
+                'timestamp': message.get('timestamp'),
+                'user_id': message.get('user_id'),
+                'risk_level': 'High',
+                'ai_model': message.get('ai_model', 'scam_search'),
+                'analysis_result': message.get('response', '')[:200]
+            })
+        return scams
+    
+    def _get_profiles_data(self) -> List[Dict]:
+        """Get profile data for export"""
+        profiles = []
+        if hasattr(self.bot_handlers, 'generated_profiles'):
+            for prof_id, prof_data in self.bot_handlers.generated_profiles.items():
+                profiles.append({
+                    'id': prof_id,
+                    'name': prof_data.get('name', 'Unknown'),
+                    'type': 'UK Profile',
+                    'created': prof_data.get('generated_at', datetime.now().isoformat()),
+                    'postcode': prof_data.get('postcode', 'N/A'),
+                    'age': prof_data.get('age', 'N/A'),
+                    'city': prof_data.get('city', 'N/A')
+                })
+        return profiles
     
     def _generate_realistic_business_info(self, company_name: str) -> Dict[str, str]:
         """Generate realistic business information for a company"""
