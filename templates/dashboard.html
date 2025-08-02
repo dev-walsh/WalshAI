@@ -446,6 +446,16 @@
                 return;
             }
 
+            // Show loading state
+            const resultDiv = document.getElementById('clone-result');
+            resultDiv.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <h4>🔄 Analyzing ${companyName}...</h4>
+                    <p>AI experts are conducting comprehensive business analysis...</p>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+
             try {
                 const response = await fetch('/api/clone-company', {
                     method: 'POST',
@@ -457,11 +467,59 @@
 
                 const result = await response.json();
 
-                const resultDiv = document.getElementById('clone-result');
+                if (result.success !== false) {
+                    resultDiv.innerHTML = `
+                        <h4>🏢 Analysis for: ${result.company_name || companyName}</h4>
+                        <div style="margin-bottom: 15px;">
+                            <strong>📊 Business Model:</strong><br>
+                            <p style="margin-left: 20px;">${result.business_model || 'Analysis in progress...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>🏗️ Organizational Structure:</strong><br>
+                            <p style="margin-left: 20px;">${result.structure || 'Structure analysis pending...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>📋 Implementation Plan:</strong><br>
+                            <p style="margin-left: 20px;">${result.implementation_plan || 'Implementation strategy being developed...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>💰 Estimated Costs:</strong><br>
+                            <p style="margin-left: 20px;">${result.estimated_costs || 'Cost analysis pending...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>⏰ Timeline:</strong><br>
+                            <p style="margin-left: 20px;">${result.timeline || 'Timeline planning in progress...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>⚖️ Legal Considerations:</strong><br>
+                            <p style="margin-left: 20px;">${result.legal_considerations || 'Legal review pending...'}</p>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>💡 Recommendations:</strong><br>
+                            <p style="margin-left: 20px;">${result.recommendations || 'Strategic recommendations being prepared...'}</p>
+                        </div>
+                        <div style="margin-top: 20px; padding: 10px; background: #f0f8ff; border-radius: 5px;">
+                            <small><strong>Generated:</strong> ${new Date().toLocaleString()}</small>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h4>❌ Analysis Error</h4>
+                        <p><strong>Company:</strong> ${companyName}</p>
+                        <p><strong>Error:</strong> ${result.error || 'Unknown error occurred'}</p>
+                        <p>Please try again or contact support if the issue persists.</p>
+                    `;
+                }
+
+            } catch (error) {
+                console.error('Error analyzing company:', error);
                 resultDiv.innerHTML = `
-                    <h4>Analysis for: ${result.company_name}</h4>
-                    <p><strong>Business Model:</strong> ${result.business_model}</p>
-                    <p><strong>Structure:</strong> ${result.structure}</p>
+                    <h4>❌ Network Error</h4>
+                    <p><strong>Company:</strong> ${companyName}</p>
+                    <p><strong>Error:</strong> Failed to connect to analysis service</p>
+                    <p>Please check your connection and try again.</p>
+                `;
+            }ng> ${result.structure}</p>
                     <p><strong>Implementation Plan:</strong> ${result.implementation_plan}</p>
                     <p><strong>Estimated Costs:</strong> ${result.estimated_costs}</p>
                     <p><strong>Timeline:</strong> ${result.timeline}</p>
