@@ -85,25 +85,29 @@ class BotHandlers:
         user = update.effective_user
         user_id = user.id
         
-        # Prevent duplicate processing
-        if hasattr(context, 'user_data') and context.user_data.get('processing_start'):
+        # Prevent duplicate processing using a more reliable method
+        processing_key = f'processing_start_{user_id}'
+        if hasattr(self, '_processing_commands') and processing_key in self._processing_commands:
             return
-        if hasattr(context, 'user_data'):
-            context.user_data['processing_start'] = True
         
-        logger.info(f"User {user_id} ({user.username}) started the bot")
+        # Initialize processing tracker if it doesn't exist
+        if not hasattr(self, '_processing_commands'):
+            self._processing_commands = set()
+        
+        self._processing_commands.add(processing_key)
+        
+        try:
+            logger.info(f"User {user_id} ({user.username}) started the bot")
         
         # Check if user is authenticated
-        if user_id not in self.authenticated_users:
-            await update.message.reply_text(
-                "🔐 *Access Restricted*\n\n"
-                "Please enter the 4-digit passcode to access WalshAI Professional Suite:\n\n"
-                "Send the passcode as a message to continue.",
-                parse_mode=ParseMode.MARKDOWN
-            )
-            if hasattr(context, 'user_data'):
-                context.user_data['processing_start'] = False
-            return
+            if user_id not in self.authenticated_users:
+                await update.message.reply_text(
+                    "🔐 *Access Restricted*\n\n"
+                    "Please enter the 4-digit passcode to access WalshAI Professional Suite:\n\n"
+                    "Send the passcode as a message to continue.",
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return
         
         # Create clean button menu with AI Experts
         keyboard = []
@@ -164,9 +168,10 @@ class BotHandlers:
             parse_mode=ParseMode.MARKDOWN
         )
         
-        # Clear processing flag
-        if hasattr(context, 'user_data'):
-            context.user_data['processing_start'] = False
+        finally:
+            # Clear processing flag
+            if hasattr(self, '_processing_commands'):
+                self._processing_commands.discard(processing_key)
     
     async def handle_model_selection(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Handle model selection and advanced tool callbacks"""
