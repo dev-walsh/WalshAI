@@ -21,11 +21,11 @@ class Config:
         self.DEEPSEEK_API_URL = os.getenv('DEEPSEEK_API_URL', 'https://api.deepseek.com/v1/chat/completions')
         self.DEEPSEEK_MODEL = os.getenv('DEEPSEEK_MODEL', 'deepseek-chat')
         
-        # Bot Configuration
-        self.MAX_MESSAGE_LENGTH = int(os.getenv('MAX_MESSAGE_LENGTH', '4000'))
-        self.MAX_CONVERSATION_HISTORY = int(os.getenv('MAX_CONVERSATION_HISTORY', '10'))
-        self.REQUEST_TIMEOUT = int(os.getenv('REQUEST_TIMEOUT', '30'))
-        self.MAX_RETRIES = int(os.getenv('MAX_RETRIES', '3'))
+        # Bot Configuration - Optimized for speed
+        self.MAX_MESSAGE_LENGTH = int(os.getenv('MAX_MESSAGE_LENGTH', '3000'))  # Reduced for faster processing
+        self.MAX_CONVERSATION_HISTORY = int(os.getenv('MAX_CONVERSATION_HISTORY', '6'))  # Reduced for speed
+        self.REQUEST_TIMEOUT = int(os.getenv('REQUEST_TIMEOUT', '15'))  # Faster timeout
+        self.MAX_RETRIES = int(os.getenv('MAX_RETRIES', '2'))  # Fewer retries for speed
         
         # Rate Limiting
         self.RATE_LIMIT_REQUESTS = int(os.getenv('RATE_LIMIT_REQUESTS', '20'))

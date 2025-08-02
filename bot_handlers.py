@@ -381,8 +381,10 @@ class BotHandlers:
             )
             return
         
-        # Send typing indicator
-        await context.bot.send_chat_action(chat_id=update.effective_chat.id, action="typing")
+        # Send typing indicator (but don't wait for it)
+        asyncio.create_task(
+            context.bot.send_chat_action(chat_id=update.effective_chat.id, action="typing")
+        )
         
         try:
             # Get conversation history
@@ -391,9 +393,10 @@ class BotHandlers:
             # Add user message to conversation
             conversation.append({"role": "user", "content": message_text})
             
-            # Limit conversation history
-            if len(conversation) > self.config.MAX_CONVERSATION_HISTORY * 2:
-                conversation = conversation[-self.config.MAX_CONVERSATION_HISTORY * 2:]
+            # Limit conversation history more aggressively for speed
+            max_history = min(self.config.MAX_CONVERSATION_HISTORY, 6) * 2  # Reduce for faster API calls
+            if len(conversation) > max_history:
+                conversation = conversation[-max_history:]
                 self.conversations[user_id] = conversation
             
             # Get current AI model
@@ -403,14 +406,17 @@ class BotHandlers:
             system_message = self.get_system_message_for_model(current_model)
             messages = [system_message] + conversation
             
-            # Get AI response
-            response = await asyncio.get_event_loop().run_in_executor(
-                None, 
-                self.deepseek_client.create_chat_completion,
-                messages
+            # Get AI response with timeout
+            response = await asyncio.wait_for(
+                asyncio.get_event_loop().run_in_executor(
+                    None, 
+                    self.deepseek_client.create_chat_completion,
+                    messages
+                ),
+                timeout=20.0  # 20 second total timeout
             )
             
-            if response:
+            if response and not response.startswith('❌') and not response.startswith('⏰') and not response.startswith('🌐'):
                 # Add assistant response to conversation
                 conversation.append({"role": "assistant", "content": response})
                 
@@ -424,39 +430,60 @@ class BotHandlers:
                         ai_model=current_model
                     )
                 
-                # Split long responses
+                # Send response (split if too long)
                 if len(response) > 4000:
-                    chunks = [response[i:i+4000] for i in range(0, len(response), 4000)]
-                    for i, chunk in enumerate(chunks):
-                        if i == 0:
-                            await update.message.reply_text(chunk)
-                        else:
-                            await context.bot.send_message(chat_id=update.effective_chat.id, text=chunk)
+                    chunks = [response[i:i+3800] for i in range(0, len(response), 3800)]
+                    for chunk in chunks:
+                        await update.message.reply_text(chunk)
                 else:
                     await update.message.reply_text(response)
                 
                 logger.info(f"Successfully responded to user {user_id} using {current_model} model")
                 
+            elif response and (response.startswith('❌') or response.startswith('⏰') or response.startswith('🌐')):
+                # Handle specific error messages from the client
+                await update.message.reply_text(response, parse_mode=ParseMode.MARKDOWN)
+                logger.warning(f"API client returned error for user {user_id}: {response}")
+                
             else:
+                # Handle null response (likely credits issue)
                 await update.message.reply_text(
-                    "🚫 I can't generate a response right now. This is likely because:\n\n"
-                    "💳 **AI service needs credits** - Check your account balance\n"
-                    "⚡ High server load\n"
-                    "🌐 Network issues\n\n"
-                    "**To fix**: Add credits to your AI service account, then try again.\n"
-                    "If you recently added credits, wait a few minutes for them to activate.\n\n"
-                    "Use /clear to reset our conversation if needed.",
+                    "💳 **DeepSeek Credits Issue**\n\n"
+                    "Your AI service account needs more credits:\n\n"
+                    "🔧 **Quick Fix:**\n"
+                    "1. Visit [DeepSeek Platform](https://platform.deepseek.com)\n"
+                    "2. Add credits to your account\n"
+                    "3. Wait 2-3 minutes for activation\n"
+                    "4. Try your message again\n\n"
+                    "💡 **Alternative:** Check if your API key is correct in the configuration.\n\n"
+                    "Use /clear if you want to reset our conversation.",
                     parse_mode=ParseMode.MARKDOWN
                 )
-                logger.warning(f"Failed to get response from DeepSeek API for user {user_id}")
+                logger.warning(f"Credits/API issue for user {user_id} - null response from DeepSeek")
+        
+        except asyncio.TimeoutError:
+            logger.error(f"Timeout handling message from user {user_id}")
+            if self.dashboard:
+                self.dashboard.log_error()
+            await update.message.reply_text(
+                "⏰ **Response Timeout**\n\n"
+                "The AI service is taking too long to respond. This usually means:\n\n"
+                "• High server load on DeepSeek\n"
+                "• Complex query requiring more processing time\n"
+                "• Network connectivity issues\n\n"
+                "**Try:** Simplify your question or try again in a moment.",
+                parse_mode=ParseMode.MARKDOWN
+            )
         
         except Exception as e:
             logger.error(f"Error handling message from user {user_id}: {e}")
             if self.dashboard:
                 self.dashboard.log_error()
             await update.message.reply_text(
-                "❌ An unexpected error occurred while processing your message. "
-                "Please try again later or use /clear to reset the conversation.",
+                "❌ **Unexpected Error**\n\n"
+                "Something went wrong while processing your message.\n\n"
+                "**Try:** Use /clear to reset the conversation, then try again.\n"
+                "If the problem persists, restart the bot.",
                 parse_mode=ParseMode.MARKDOWN
             )
     

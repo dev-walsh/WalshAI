@@ -38,10 +38,17 @@ def main():
             raise ValueError("DEEPSEEK_API_KEY is required")
         
         # Create application with optimized settings for faster responses
-        application = Application.builder().token(config.TELEGRAM_BOT_TOKEN).read_timeout(10).write_timeout(10).build()
+        application = Application.builder().token(config.TELEGRAM_BOT_TOKEN).read_timeout(8).write_timeout(8).build()
         
         # Initialize bot handlers
         bot_handlers = BotHandlers(config)
+        
+        # Test DeepSeek connection at startup
+        logger.info("Testing DeepSeek API connection...")
+        if bot_handlers.deepseek_client.test_connection():
+            logger.info("✅ DeepSeek API connection successful")
+        else:
+            logger.warning("⚠️ DeepSeek API connection failed - check your API key and credits")
         
         # Initialize web dashboard
         dashboard = BotDashboard(bot_handlers)
