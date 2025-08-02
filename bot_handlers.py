@@ -177,7 +177,7 @@ class BotHandlers:
         
         keyboard.append([
             InlineKeyboardButton("🔄 Current Expert", callback_data="current"),
-            InlineKeyboardButton("🌐 Dashboard", url="http://0.0.0.0:5000")
+            InlineKeyboardButton("🌐 Dashboard", url="http://0.0.0.0:8080")
         ])
         
         reply_markup = InlineKeyboardMarkup(keyboard)
