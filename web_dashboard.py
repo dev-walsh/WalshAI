@@ -570,7 +570,7 @@ class BotDashboard:
                 return jsonify(messages)
             except Exception as e:
                 logger.error(f"Error getting messages: {e}")
-                return jsonify([])
+                return jsonify({'error': str(e), 'messages': []})
 
     def _calculate_performance_score(self) -> float:
         """Calculate system performance score"""
