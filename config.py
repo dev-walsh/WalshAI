@@ -34,43 +34,62 @@ class Config:
         # Logging
         self.LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
         
-        # AI Models Configuration
+        # AI Models Configuration - Professional Suite
         self.AI_MODELS = {
             'financial': {
-                'name': 'Financial Investigator',
+                'name': 'Financial Investigation Expert',
                 'emoji': '🔍',
-                'description': 'Specialized in financial investigations, fraud detection, and compliance'
+                'description': 'Advanced financial investigations, AML compliance, fraud detection with professional tools',
+                'tools': ['Transaction Analysis', 'AML Risk Assessment', 'Entity Investigation', 'Fund Tracing', 'Pattern Detection', 'Compliance Reporting']
             },
             'assistant': {
-                'name': 'General Assistant',
+                'name': 'General Intelligence Expert',
                 'emoji': '🤖',
-                'description': 'General purpose AI assistant for everyday tasks'
+                'description': 'Comprehensive AI assistant with professional analysis capabilities',
+                'tools': ['Research Analysis', 'Document Creation', 'Problem Solving', 'Strategic Planning', 'Quality Assurance']
             },
             'property': {
                 'name': 'Property Development Expert',
                 'emoji': '🏗️',
-                'description': 'Specialized in foreign property development, investment, and sales'
+                'description': 'International property development, investment analysis, and market intelligence',
+                'tools': ['ROI Calculator', 'Market Analysis', 'Feasibility Studies', 'Cost Estimation', 'Investment Planning']
             },
             'cloner': {
-                'name': 'Company Cloner',
+                'name': 'Company Intelligence Expert',
                 'emoji': '🏢',
-                'description': 'Creates comprehensive company profiles and business structure analysis'
+                'description': 'Complete business intelligence, company analysis, and competitive research',
+                'tools': ['Company Analysis', 'Business Model Breakdown', 'Competitive Intelligence', 'Legal Structure Analysis', 'Market Positioning']
             },
             'marketing': {
-                'name': 'Marketing Specialist',
+                'name': 'Marketing Intelligence Expert',
                 'emoji': '📈',
-                'description': 'Expert in property marketing, sales strategies, and investment promotion'
+                'description': 'Advanced marketing analytics, luxury campaigns, and international strategies',
+                'tools': ['Campaign Strategy', 'Audience Analysis', 'Performance Analytics', 'Luxury Marketing', 'International Campaigns']
             },
             'scam_search': {
-                'name': 'Scam Investigator',
+                'name': 'Scam Intelligence Expert',
                 'emoji': '🚨',
-                'description': 'Specialized in identifying and explaining various scam methodologies'
+                'description': 'Advanced fraud detection, scam analysis, and security assessment',
+                'tools': ['Scam Detection', 'Risk Assessment', 'Fraud Analysis', 'Protection Strategies', 'Investigation Support']
             },
             'profile_gen': {
-                'name': 'Profile Generator',
+                'name': 'Profile Generation Expert',
                 'emoji': '🆔',
-                'description': 'Generates realistic UK identity profiles for testing purposes'
+                'description': 'Professional testing data creation with UK identity profile generation',
+                'tools': ['UK Profile Generation', 'Document Creation', 'Address Generation', 'Contact Details', 'Business Profiles']
             }
+        }
+        
+        # Professional Tool Configuration
+        self.PROFESSIONAL_FEATURES = {
+            'financial_suite': True,
+            'property_tools': True,
+            'company_intelligence': True,
+            'scam_database': True,
+            'profile_generator': True,
+            'marketing_analytics': True,
+            'advanced_analysis': True,
+            'professional_reports': True
         }
         
     def validate(self):
