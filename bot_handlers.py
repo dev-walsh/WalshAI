@@ -99,7 +99,7 @@ class BotHandlers:
         try:
             logger.info(f"User {user_id} ({user.username}) started the bot")
         
-        # Check if user is authenticated
+            # Check if user is authenticated
             if user_id not in self.authenticated_users:
                 await update.message.reply_text(
                     "🔐 *Access Restricted*\n\n"
@@ -110,63 +110,63 @@ class BotHandlers:
                 return
         
         # Create clean button menu with AI Experts
-        keyboard = []
+            keyboard = []
         
         # AI Experts selection (2 per row for clean layout)
-        keyboard.append([
-            InlineKeyboardButton("🔍 Financial Expert", callback_data="model_financial"),
-            InlineKeyboardButton("🤖 General Assistant", callback_data="model_assistant")
-        ])
-        
-        keyboard.append([
-            InlineKeyboardButton("🏗️ Property Expert", callback_data="model_property"),
-            InlineKeyboardButton("🏢 Company Expert", callback_data="model_cloner")
-        ])
-        
-        keyboard.append([
-            InlineKeyboardButton("📈 Marketing Expert", callback_data="model_marketing"),
-            InlineKeyboardButton("🚨 Scam Expert", callback_data="model_scam_search")
-        ])
-        
-        keyboard.append([
-            InlineKeyboardButton("🆔 Profile Generator", callback_data="model_profile_gen")
-        ])
-        
-        # Utility buttons
-        keyboard.append([
-            InlineKeyboardButton("📋 Help", callback_data="help"),
-            InlineKeyboardButton("🗑️ Clear History", callback_data="clear")
-        ])
-        
-        keyboard.append([
-            InlineKeyboardButton("🔄 Current Expert", callback_data="current"),
-            InlineKeyboardButton("🌐 Dashboard", url="http://0.0.0.0:5000")
-        ])
-        
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        
-        current_model = self.user_models[user_id]
-        model_info = self.config.AI_MODELS[current_model]
-        
-        welcome_message = (
-            f"🎯 *Welcome to WalshAI Professional Suite!*\n\n"
-            f"Hi {user.first_name}! Your comprehensive AI toolkit with advanced expert capabilities.\n\n"
-            f"*Current Expert:* {model_info['emoji']} {model_info['name']}\n\n"
-            f"*🛠️ Available Professional Tools:*\n"
-            f"• Financial Investigation Suite\n"
-            f"• Property Development Tools\n"
-            f"• Company Intelligence Platform\n"
-            f"• Scam Detection Database\n"
-            f"• UK Profile Generator\n"
-            f"• Marketing Analytics Suite\n\n"
-            f"Choose an expert or access professional tools below! 🚀"
-        )
-        
-        await update.message.reply_text(
-            welcome_message, 
-            reply_markup=reply_markup,
-            parse_mode=ParseMode.MARKDOWN
-        )
+            keyboard.append([
+                InlineKeyboardButton("🔍 Financial Expert", callback_data="model_financial"),
+                InlineKeyboardButton("🤖 General Assistant", callback_data="model_assistant")
+            ])
+            
+            keyboard.append([
+                InlineKeyboardButton("🏗️ Property Expert", callback_data="model_property"),
+                InlineKeyboardButton("🏢 Company Expert", callback_data="model_cloner")
+            ])
+            
+            keyboard.append([
+                InlineKeyboardButton("📈 Marketing Expert", callback_data="model_marketing"),
+                InlineKeyboardButton("🚨 Scam Expert", callback_data="model_scam_search")
+            ])
+            
+            keyboard.append([
+                InlineKeyboardButton("🆔 Profile Generator", callback_data="model_profile_gen")
+            ])
+            
+            # Utility buttons
+            keyboard.append([
+                InlineKeyboardButton("📋 Help", callback_data="help"),
+                InlineKeyboardButton("🗑️ Clear History", callback_data="clear")
+            ])
+            
+            keyboard.append([
+                InlineKeyboardButton("🔄 Current Expert", callback_data="current"),
+                InlineKeyboardButton("🌐 Dashboard", url="http://0.0.0.0:5000")
+            ])
+            
+            reply_markup = InlineKeyboardMarkup(keyboard)
+            
+            current_model = self.user_models[user_id]
+            model_info = self.config.AI_MODELS[current_model]
+            
+            welcome_message = (
+                f"🎯 *Welcome to WalshAI Professional Suite!*\n\n"
+                f"Hi {user.first_name}! Your comprehensive AI toolkit with advanced expert capabilities.\n\n"
+                f"*Current Expert:* {model_info['emoji']} {model_info['name']}\n\n"
+                f"*🛠️ Available Professional Tools:*\n"
+                f"• Financial Investigation Suite\n"
+                f"• Property Development Tools\n"
+                f"• Company Intelligence Platform\n"
+                f"• Scam Detection Database\n"
+                f"• UK Profile Generator\n"
+                f"• Marketing Analytics Suite\n\n"
+                f"Choose an expert or access professional tools below! 🚀"
+            )
+            
+            await update.message.reply_text(
+                welcome_message, 
+                reply_markup=reply_markup,
+                parse_mode=ParseMode.MARKDOWN
+            )
         
         except Exception as e:
             logger.error(f"Error in start_command: {e}")
