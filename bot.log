@@ -2777,3 +2777,56 @@ task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at
 2025-08-02 13:07:19,520 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
 2025-08-02 13:07:19,520 - apscheduler.scheduler - INFO - Scheduler has been shut down
 2025-08-02 13:07:19,530 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 13:16:49,534 - config - INFO - Configuration validation successful
+2025-08-02 13:16:49,557 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 13:16:49,557 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 13:16:49,827 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 13:16:49,828 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 13:16:53,234 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 13:16:53,235 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 13:16:53,241 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 13:16:53,241 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 13:16:53,242 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 13:16:53,245 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 13:16:53,248 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.66.162:5000
+2025-08-02 13:16:53,248 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 13:16:53,977 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:16:53] "GET / HTTP/1.1" 200 -
+2025-08-02 13:16:54,785 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:16:54] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:16:54,829 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:16:54] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:16:55,781 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 13:16:55,781 - telegram.ext._application - INFO - Application started
+2025-08-02 13:17:06,669 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:06] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:17:07,073 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:07] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:17:07,493 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:07] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 13:17:08,451 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:08] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:17:08,847 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:08] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:17:09,425 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:09] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:17:13,853 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:17:17,276 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 13:17:17,529 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 13:17:18,592 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:17:24,839 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:24] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:17:24,841 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:24] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:17:29,523 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): conner walsh from maldon essex...
+2025-08-02 13:17:54,837 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:54] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:17:54,839 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:17:54] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:17:56,681 - bot_handlers - INFO - Successfully provided professional analysis to user 6550499578 using profile_gen expert
+2025-08-02 13:18:19,970 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:19] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:18:20,410 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:20] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:18:20,976 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:20] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:18:21,236 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:21] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:18:22,952 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:22] "GET / HTTP/1.1" 200 -
+2025-08-02 13:18:23,729 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:23] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 13:18:23,734 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:23] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:18:24,948 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:24] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 13:18:46,777 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:46] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 13:18:48,793 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:48] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:18:53,733 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:53] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:18:53,738 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:18:53] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:19:23,756 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:23] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:19:23,762 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:23] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:19:53,756 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:53] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 13:19:53,760 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:19:53] "GET /api/stats HTTP/1.1" 200 -
