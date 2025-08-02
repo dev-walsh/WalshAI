@@ -1983,3 +1983,20 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 11:56:59,340 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:56:59] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 11:57:08,830 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
 2025-08-02 11:57:18,975 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:57:29,120 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:57:29,345 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:57:29] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 11:57:39,263 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:57:46,039 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:57:46,041 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 11:57:46,488 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/sendMessage "HTTP/1.1 200 OK"
+2025-08-02 11:57:56,185 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:57:59,351 - werkzeug - INFO - 172.31.87.2 - - [02/Aug/2025 11:57:59] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 11:58:04,850 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:58:05,286 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 11:58:05,481 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 11:58:10,116 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAHoZA6RHuVaa-LusL0zlUUBS_XPbuYRWHE/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 11:58:10,117 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-08-02 11:58:10,117 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 11:58:10,127 - telegram.ext.Application - INFO - Application.stop() complete
+2025-08-02 11:58:11,900 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
+2025-08-02 11:58:16,994 - __main__ - ERROR - Failed to start bot: HTTPAdapter.__init__() got an unexpected keyword argument 'socket_options'
