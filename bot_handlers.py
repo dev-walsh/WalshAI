@@ -443,7 +443,7 @@ class BotHandlers:
             elif response and (response.startswith('❌') or response.startswith('⏰') or response.startswith('🌐')):
                 # Handle specific error messages from the client
                 await update.message.reply_text(response, parse_mode=ParseMode.MARKDOWN)
-                logger.warning(f"API client returned error for user {user_id}: {response}")
+                logger.warning(f"API client returned error for user {user_id}: {response[:100]}...")
                 
             else:
                 # Handle null response (likely credits issue)

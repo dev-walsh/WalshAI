@@ -1,4 +1,3 @@
-
 """
 DeepSeek API Client for AI chat completions - Optimized for Speed
 """
@@ -25,7 +24,7 @@ class DeepSeekClient:
 
         # Configure optimized session
         self.session = requests.Session()
-        
+
         # Optimized retry strategy for speed
         retry_strategy = Retry(
             total=self.max_retries,
@@ -34,14 +33,14 @@ class DeepSeekClient:
             backoff_factor=0.3,  # Faster backoff
             raise_on_status=False
         )
-        
+
         # Single optimized adapter configuration
         adapter = HTTPAdapter(
             pool_connections=10,
             pool_maxsize=20,
             max_retries=retry_strategy
         )
-        
+
         self.session.mount("http://", adapter)
         self.session.mount("https://", adapter)
 
@@ -79,7 +78,7 @@ class DeepSeekClient:
                 json=payload,
                 timeout=self.timeout
             )
-            
+
             request_time = time.time() - start_time
             logger.info(f"API request completed in {request_time:.2f}s")
 
