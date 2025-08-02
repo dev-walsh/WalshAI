@@ -168,6 +168,14 @@ class BotHandlers:
             parse_mode=ParseMode.MARKDOWN
         )
         
+        except Exception as e:
+            logger.error(f"Error in start_command: {e}")
+            await update.message.reply_text(
+                "❌ **System Error**\n\n"
+                "An error occurred while starting the bot.\n"
+                "Please try again or contact support.",
+                parse_mode=ParseMode.MARKDOWN
+            )
         finally:
             # Clear processing flag
             if hasattr(self, '_processing_commands'):
