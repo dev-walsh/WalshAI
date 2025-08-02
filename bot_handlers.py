@@ -905,7 +905,7 @@ class BotHandlers:
                         max_tokens=model_params['max_tokens']
                     )
                 ),
-                timeout=40.0
+                timeout=60.0
             )
             
             if response and not response.startswith('❌') and not response.startswith('⏰') and not response.startswith('🌐'):
