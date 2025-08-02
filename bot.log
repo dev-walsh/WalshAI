@@ -2404,3 +2404,49 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:37:25,552 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
 2025-08-02 12:37:25,692 - bot_handlers - INFO - User 6550499578 successfully authenticated
 2025-08-02 12:37:29,527 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:37:34,602 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:37:41,155 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): uk female age 19...
+2025-08-02 12:37:58,090 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:37:58] "GET / HTTP/1.1" 200 -
+2025-08-02 12:38:03,861 - bot_handlers - INFO - Successfully provided professional analysis to user 6550499578 using profile_gen expert
+2025-08-02 12:38:20,257 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 12:38:20,258 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 12:38:20,268 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 12:38:22,419 - config - INFO - Configuration validation successful
+2025-08-02 12:38:22,435 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:38:22,436 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:38:22,639 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:38:22,639 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:38:26,358 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:38:26,359 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:38:26,365 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:38:26,365 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:38:26,366 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:38:26,368 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:38:26,373 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+2025-08-02 12:38:26,373 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:38:26,790 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:38:26] "GET / HTTP/1.1" 200 -
+2025-08-02 12:38:27,616 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:38:27] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:38:27,656 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:38:27] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:38:28,872 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:38:28,872 - telegram.ext._application - INFO - Application started
+2025-08-02 12:38:57,637 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:38:57] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:39:27,642 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:39:27] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:39:35,952 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:39:35] "GET / HTTP/1.1" 200 -
+2025-08-02 12:39:36,726 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:39:36] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:39:36,727 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:39:36] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:39:37,627 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:39:37] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:40:06,745 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:40:06] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:40:06,746 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:40:06] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:40:11,766 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 12:40:11,767 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:40:11] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 12:40:36,738 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:40:36] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:40:36,741 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:40:36] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:41:06,749 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:41:06] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:41:06,750 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:41:06] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:41:36,735 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:41:36] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:41:36,735 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:41:36] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:42:06,744 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:06] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:42:06,746 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:06] "GET /api/company-clones HTTP/1.1" 200 -
