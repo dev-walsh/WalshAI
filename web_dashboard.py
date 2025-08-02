@@ -321,6 +321,126 @@ class BotDashboard:
                 logger.error(f"Models API error: {e}")
                 return jsonify({'error': 'Failed to retrieve model data'}), 500
 
+        @self.app.route('/api/investigations')
+        def api_investigations():
+            """Get financial investigations data"""
+            try:
+                investigations = []
+                if hasattr(self.bot_handlers, 'investigation_database'):
+                    for inv_id, inv_data in self.bot_handlers.investigation_database.items():
+                        investigations.append({
+                            'id': inv_id,
+                            'type': inv_data.get('type', 'General'),
+                            'status': inv_data.get('status', 'Active'),
+                            'created': inv_data.get('created', datetime.now().isoformat()),
+                            'summary': inv_data.get('summary', 'Investigation in progress')
+                        })
+                
+                return jsonify({
+                    'investigations': investigations,
+                    'total': len(investigations)
+                })
+            except Exception as e:
+                logger.error(f"Investigations API error: {e}")
+                return jsonify({'investigations': [], 'total': 0})
+
+        @self.app.route('/api/company-clones')
+        def api_company_clones():
+            """Get company analysis data"""
+            try:
+                companies = []
+                if hasattr(self.bot_handlers, 'company_profiles'):
+                    for comp_id, comp_data in self.bot_handlers.company_profiles.items():
+                        companies.append({
+                            'id': comp_id,
+                            'name': comp_data.get('company_name', 'Unknown Company'),
+                            'type': comp_data.get('business_type', 'Unknown'),
+                            'industry': comp_data.get('industry', 'Unknown'),
+                            'created': comp_data.get('created', datetime.now().isoformat())
+                        })
+                
+                return jsonify({
+                    'companies': companies,
+                    'total': len(companies)
+                })
+            except Exception as e:
+                logger.error(f"Company clones API error: {e}")
+                return jsonify({'companies': [], 'total': 0})
+
+        @self.app.route('/api/scams')
+        def api_scams():
+            """Get scam analysis data"""
+            try:
+                scams = []
+                for message in self.message_logs:
+                    if message.get('is_scam'):
+                        scams.append({
+                            'id': len(scams) + 1,
+                            'type': 'Detected Scam',
+                            'message': message.get('message', '')[:200],
+                            'timestamp': message.get('timestamp'),
+                            'user_id': message.get('user_id'),
+                            'risk_level': 'High'
+                        })
+                
+                return jsonify({
+                    'scams': scams,
+                    'total': len(scams)
+                })
+            except Exception as e:
+                logger.error(f"Scams API error: {e}")
+                return jsonify({'scams': [], 'total': 0})
+
+        @self.app.route('/api/profiles')
+        def api_profiles():
+            """Get generated profiles data"""
+            try:
+                profiles = []
+                if hasattr(self.bot_handlers, 'generated_profiles'):
+                    for prof_id, prof_data in self.bot_handlers.generated_profiles.items():
+                        profiles.append({
+                            'id': prof_id,
+                            'name': prof_data.get('name', 'Unknown'),
+                            'type': 'UK Profile',
+                            'created': datetime.now().isoformat(),
+                            'postcode': prof_data.get('address', {}).get('postcode', 'N/A') if isinstance(prof_data.get('address'), dict) else 'N/A'
+                        })
+                
+                return jsonify({
+                    'profiles': profiles,
+                    'total': len(profiles)
+                })
+            except Exception as e:
+                logger.error(f"Profiles API error: {e}")
+                return jsonify({'profiles': [], 'total': 0})
+
+        @self.app.route('/api/clone-company', methods=['POST'])
+        def api_clone_company():
+            """Handle company cloning requests"""
+            try:
+                data = request.get_json()
+                company_name = data.get('company', 'Unknown Company')
+                
+                # Store the request in company profiles
+                if hasattr(self.bot_handlers, 'company_profiles'):
+                    clone_id = len(self.bot_handlers.company_profiles) + 1
+                    self.bot_handlers.company_profiles[clone_id] = {
+                        'company_name': company_name,
+                        'business_type': 'Analysis Request',
+                        'industry': 'Pending Analysis',
+                        'created': datetime.now().isoformat(),
+                        'status': 'Processing'
+                    }
+                
+                return jsonify({
+                    'success': True,
+                    'message': f'Company analysis request for "{company_name}" has been queued.',
+                    'id': clone_id
+                })
+            except Exception as e:
+                logger.error(f"Clone company API error: {e}")
+                return jsonify({'success': False, 'error': str(e)}), 500
+
         @self.app.route('/api/health')
         def api_health():
             """System health check endpoint"""

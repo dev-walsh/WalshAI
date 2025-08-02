@@ -29,11 +29,11 @@ class DeepSeekAPIError(Exception):
 class DeepSeekClient:
     """Enhanced DeepSeek API client with improved error handling and performance"""
 
-    def __init__(self, api_key: str, api_url: str, model: str, timeout: int = 45, max_retries: int = 3):
+    def __init__(self, api_key: str, api_url: str, model: str, timeout: int = 60, max_retries: int = 3):
         self.api_key = api_key
         self.api_url = api_url
         self.model = model
-        self.timeout = min(timeout, 60)  # Increased timeout for better reliability
+        self.timeout = min(timeout, 90)  # Increased timeout for better reliability
         self.max_retries = min(max_retries, 3)  # Reasonable retry limit
         
         # Initialize optimized session
