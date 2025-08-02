@@ -7,7 +7,8 @@ dependencies = [
     "flask>=3.1.1",
     "psutil>=7.0.0",
     "python-dotenv>=1.1.1",
-    "python-telegram-bot[all]==20.0",
+    "python-telegram-bot[all]==21.7",
     "requests>=2.32.4",
+    "telegram>=0.0.1",
     "urllib3>=2.5.0",
 ]

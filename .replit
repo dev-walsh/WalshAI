@@ -3,6 +3,7 @@ run = "start"
 
 [nix]
 channel = "stable-25_05"
+packages = ["mailutils"]
 
 [workflows]
 runButton = "Run Financial Investigation Bot"
