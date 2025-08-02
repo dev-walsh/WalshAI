@@ -539,9 +539,10 @@ class BotDashboard:
                                 'id': f"{user_id}_{i}",
                                 'user_id': user_id,
                                 'username': username,
-                                'content': msg.get('content', '')[:200] + ('...' if len(msg.get('content', '')) > 200 else ''),
+                                'message': msg.get('content', '')[:200] + ('...' if len(msg.get('content', '')) > 200 else ''),
+                                'response': 'AI response processed',
                                 'role': msg.get('role', 'user'),
-                                'timestamp': datetime.now().strftime('%H:%M:%S'),
+                                'timestamp': datetime.now().isoformat(),
                                 'ai_model': model_info.get('name', 'Unknown'),
                                 'model_emoji': model_info.get('emoji', '🤖')
                             })

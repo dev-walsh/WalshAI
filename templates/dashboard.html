@@ -519,18 +519,6 @@
                     <p><strong>Error:</strong> Failed to connect to analysis service</p>
                     <p>Please check your connection and try again.</p>
                 `;
-            }ng> ${result.structure}</p>
-                    <p><strong>Implementation Plan:</strong> ${result.implementation_plan}</p>
-                    <p><strong>Estimated Costs:</strong> ${result.estimated_costs}</p>
-                    <p><strong>Timeline:</strong> ${result.timeline}</p>
-                    <p><strong>Legal Considerations:</strong> ${result.legal_considerations}</p>
-                    <p><strong>Recommendations:</strong> ${result.recommendations}</p>
-                `;
-                resultDiv.style.display = 'block';
-
-            } catch (error) {
-                console.error('Error analyzing company:', error);
-                alert('Error analyzing company. Please try again.');
             }
         }
 
