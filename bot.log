@@ -2244,3 +2244,9 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:25:35,855 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
 2025-08-02 12:25:36,329 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
 2025-08-02 12:25:49,352 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:25:49] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:26:19,342 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:26:19] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:26:49,348 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:26:49] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:27:19,347 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:27:19] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:27:37,870 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 12:27:37,871 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 12:27:37,881 - telegram.ext._application - INFO - Application.stop() complete
