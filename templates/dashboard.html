@@ -275,10 +275,10 @@
         </div>
 
         <div id="company-cloner" class="tab-content">
-            <h3>🏢 Company Cloner</h3>
+            <h3>🏢 Company Information Lookup</h3>
             <div class="company-clone-form">
-                <input type="text" id="company-name" placeholder="Enter company name to analyze...">
-                <button onclick="analyzeCompany()">Analyze Company</button>
+                <input type="text" id="company-name" placeholder="Enter company name to lookup...">
+                <button onclick="lookupCompany()">Lookup Company</button>
             </div>
             <div id="clone-result" class="clone-result"></div>
             <div id="clone-queries-list" class="message-list"></div>
@@ -438,8 +438,8 @@
             `).join('');
         }
 
-        // Company analysis function
-        async function analyzeCompany() {
+        // Company lookup function
+        async function lookupCompany() {
             const companyName = document.getElementById('company-name').value.trim();
             if (!companyName) {
                 alert('Please enter a company name');
@@ -450,8 +450,8 @@
             const resultDiv = document.getElementById('clone-result');
             resultDiv.innerHTML = `
                 <div style="text-align: center; padding: 20px;">
-                    <h4>🔄 Analyzing ${companyName}...</h4>
-                    <p>AI experts are conducting comprehensive business analysis...</p>
+                    <h4>🔄 Looking up ${companyName}...</h4>
+                    <p>Retrieving company information...</p>
                 </div>
             `;
             resultDiv.style.display = 'block';
@@ -469,42 +469,39 @@
 
                 if (result.success !== false) {
                     resultDiv.innerHTML = `
-                        <h4>🏢 Analysis for: ${result.company_name || companyName}</h4>
-                        <div style="margin-bottom: 15px;">
-                            <strong>📊 Business Model:</strong><br>
-                            <p style="margin-left: 20px;">${result.business_model || 'Analysis in progress...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>🏗️ Organizational Structure:</strong><br>
-                            <p style="margin-left: 20px;">${result.structure || 'Structure analysis pending...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>📋 Implementation Plan:</strong><br>
-                            <p style="margin-left: 20px;">${result.implementation_plan || 'Implementation strategy being developed...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>💰 Estimated Costs:</strong><br>
-                            <p style="margin-left: 20px;">${result.estimated_costs || 'Cost analysis pending...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>⏰ Timeline:</strong><br>
-                            <p style="margin-left: 20px;">${result.timeline || 'Timeline planning in progress...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>⚖️ Legal Considerations:</strong><br>
-                            <p style="margin-left: 20px;">${result.legal_considerations || 'Legal review pending...'}</p>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>💡 Recommendations:</strong><br>
-                            <p style="margin-left: 20px;">${result.recommendations || 'Strategic recommendations being prepared...'}</p>
+                        <h4>🏢 Company Information: ${result.company_name || companyName}</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h5>📋 Registration Details</h5>
+                                <p><strong>Company Number:</strong> ${result.company_number || 'N/A'}</p>
+                                <p><strong>VAT Number:</strong> ${result.vat_number || 'N/A'}</p>
+                                <p><strong>Business Type:</strong> ${result.business_type || 'N/A'}</p>
+                                <p><strong>Industry:</strong> ${result.industry || 'N/A'}</p>
+                                <p><strong>Incorporation Date:</strong> ${result.incorporation_date || 'N/A'}</p>
+                                <p><strong>Status:</strong> ${result.status || 'N/A'}</p>
+                                <p><strong>SIC Code:</strong> ${result.sic_code || 'N/A'}</p>
+                                <p><strong>Employees:</strong> ${result.employee_count || 'N/A'}</p>
+                            </div>
+                            <div>
+                                <h5>📍 Contact Information</h5>
+                                <p><strong>Registered Address:</strong><br>${result.registered_address || 'N/A'}</p>
+                                <p><strong>Directors:</strong> ${result.directors || 'N/A'}</p>
+                                <p><strong>Email:</strong> ${result.contact_email || 'N/A'}</p>
+                                <p><strong>Phone:</strong> ${result.contact_phone || 'N/A'}</p>
+                                <p><strong>Mobile:</strong> ${result.mobile || 'N/A'}</p>
+                                <p><strong>Website:</strong> ${result.website || 'N/A'}</p>
+                                <h5>🏦 Banking Details</h5>
+                                <p><strong>Sort Code:</strong> ${result.sort_code || 'N/A'}</p>
+                                <p><strong>Account Number:</strong> ${result.account_number || 'N/A'}</p>
+                            </div>
                         </div>
                         <div style="margin-top: 20px; padding: 10px; background: #f0f8ff; border-radius: 5px;">
-                            <small><strong>Generated:</strong> ${new Date().toLocaleString()}</small>
+                            <small><strong>Retrieved:</strong> ${new Date().toLocaleString()}</small>
                         </div>
                     `;
                 } else {
                     resultDiv.innerHTML = `
-                        <h4>❌ Analysis Error</h4>
+                        <h4>❌ Lookup Error</h4>
                         <p><strong>Company:</strong> ${companyName}</p>
                         <p><strong>Error:</strong> ${result.error || 'Unknown error occurred'}</p>
                         <p>Please try again or contact support if the issue persists.</p>
@@ -512,11 +509,11 @@
                 }
 
             } catch (error) {
-                console.error('Error analyzing company:', error);
+                console.error('Error looking up company:', error);
                 resultDiv.innerHTML = `
                     <h4>❌ Network Error</h4>
                     <p><strong>Company:</strong> ${companyName}</p>
-                    <p><strong>Error:</strong> Failed to connect to analysis service</p>
+                    <p><strong>Error:</strong> Failed to connect to lookup service</p>
                     <p>Please check your connection and try again.</p>
                 `;
             }

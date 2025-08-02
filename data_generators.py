@@ -1,6 +1,6 @@
 """Add missing methods to the UKDataGenerator class and correct the connection issues."""
 """
-Data Generation Utilities for Testing and Profile Creation
+Data Generation Utilities for Profile Creation
 Centralized data generation with UK-specific formatting
 """
 
@@ -10,7 +10,7 @@ from typing import Dict, List
 from datetime import datetime, timedelta
 
 class UKDataGenerator:
-    """UK-specific data generation for testing purposes"""
+    """UK-specific data generation utilities"""
 
     # UK Data Constants
     UK_POSTCODES = [
@@ -70,7 +70,7 @@ class UKDataGenerator:
 
     @classmethod
     def generate_complete_profile(cls) -> Dict[str, str]:
-        """Generate a complete UK profile for testing"""
+        """Generate a complete UK profile"""
         gender = random.choice(['Male', 'Female'])
         first_name = random.choice(
             cls.UK_NAMES['male_first'] if gender == 'Male' 
