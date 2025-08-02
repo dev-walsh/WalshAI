@@ -2450,3 +2450,77 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:41:36,735 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:41:36] "GET /api/company-clones HTTP/1.1" 200 -
 2025-08-02 12:42:06,744 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:06] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:42:06,746 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:06] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:42:28,521 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:28] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:42:29,450 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:29] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 12:42:30,055 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:30] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 12:42:30,638 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:30] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:42:31,132 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:31] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:42:35,170 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:35] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 12:42:36,194 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:36] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 12:42:36,732 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:36] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:42:36,750 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:36] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 12:42:39,337 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:39] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 12:42:39,879 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:39] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 12:42:40,103 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:42:40] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:43:06,738 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:43:06] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:43:06,742 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:43:06] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:43:36,748 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:43:36] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:43:36,751 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:43:36] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:43:54,162 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 12:43:54,162 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 12:43:54,172 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 12:43:55,916 - config - INFO - Configuration validation successful
+2025-08-02 12:43:55,933 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:43:55,933 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:43:55,958 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:43:55,959 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:43:59,944 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:43:59,944 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:43:59,950 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:43:59,950 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:43:59,953 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:43:59,953 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:43:59,955 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+2025-08-02 12:43:59,955 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:44:00,376 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:00] "GET / HTTP/1.1" 200 -
+2025-08-02 12:44:01,175 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:01] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:44:01,201 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:01] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:44:02,481 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:44:02,481 - telegram.ext._application - INFO - Application started
+2025-08-02 12:44:03,195 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:03] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 12:44:03,601 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:03] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 12:44:03,971 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:03] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:44:05,273 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:05] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 12:44:05,925 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:05] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 12:44:06,669 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:06] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:44:18,838 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:18] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 12:44:31,224 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:31] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:44:31,231 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:44:31] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:45:01,209 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:01] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:45:01,217 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:01] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:45:15,007 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:15] "GET / HTTP/1.1" 200 -
+2025-08-02 12:45:15,223 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:15] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:45:15,231 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:15] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:45:15,331 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-02 12:45:15,456 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-02 12:45:18,383 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:18] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:45:31,789 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:31] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:45:31,797 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:31] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:45:45,246 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:45] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:45:45,252 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:45:45] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:01,785 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:01] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:01,794 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:01] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:46:15,251 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:15] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:15,258 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:15] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:46:31,795 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:31] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:31,801 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:31] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:46:45,248 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:45] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:45,252 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:45] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:46:49,959 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:49] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 12:46:51,015 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:51] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:46:55,407 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:46:55] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 12:47:01,781 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:47:01] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:47:01,787 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:47:01] "GET /api/stats HTTP/1.1" 200 -
