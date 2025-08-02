@@ -2613,3 +2613,37 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:57:17,828 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:57:17] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:57:48,126 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:57:48] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:58:17,853 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:17] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:58:28,706 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 12:58:28,706 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 12:58:28,717 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 12:58:29,953 - config - INFO - Configuration validation successful
+2025-08-02 12:58:29,968 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:58:29,968 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:58:30,174 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:58:30,174 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:58:33,921 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:58:33,921 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:58:33,929 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:58:33,931 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:58:33,931 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:58:33,934 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:58:33,933 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.66.162:5000
+2025-08-02 12:58:33,934 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:58:34,323 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:34] "GET / HTTP/1.1" 200 -
+2025-08-02 12:58:35,125 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:35] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:58:35,151 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:35] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:58:36,428 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:58:36,428 - telegram.ext._application - INFO - Application started
+2025-08-02 12:58:37,474 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:37] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:58:41,372 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:41] "POST /api/clone-company HTTP/1.1" 200 -
+2025-08-02 12:58:52,715 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:52] "GET /api/investigations HTTP/1.1" 200 -
+2025-08-02 12:58:53,849 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:53] "GET /api/users HTTP/1.1" 200 -
+2025-08-02 12:58:54,263 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:54] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:58:54,921 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:54] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 12:58:55,437 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:58:55] "GET /api/profiles HTTP/1.1" 200 -
+2025-08-02 12:59:05,172 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:59:05] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:59:30,298 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:59:30,674 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
