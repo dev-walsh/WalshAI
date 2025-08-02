@@ -7,6 +7,7 @@ Refactored for improved maintainability and performance
 import logging
 import asyncio
 import time
+import os
 from datetime import datetime
 from typing import Dict, List, Optional
 from collections import defaultdict, deque
@@ -132,6 +133,12 @@ class BotHandlers:
                 InlineKeyboardButton("🆔 Profile Generator", callback_data="model_profile_gen")
             ])
             
+            # Communication & Export Tools
+            keyboard.append([
+                InlineKeyboardButton("📧 Communication Tools", callback_data="tools_communication"),
+                InlineKeyboardButton("📥 Export Data", callback_data="tools_exports")
+            ])
+            
             # Utility buttons
             keyboard.append([
                 InlineKeyboardButton("📋 Help", callback_data="help"),
@@ -213,6 +220,10 @@ class BotHandlers:
             await self.handle_analysis_request(query, user_id)
         elif query.data.startswith("tools_"):
             await self.handle_tool_selection(query, user_id)
+        elif query.data.startswith("comm_"):
+            await self.handle_communication_tool(query, user_id)
+        elif query.data.startswith("export_"):
+            await self.handle_export_tool(query, user_id)
     
     async def handle_model_change(self, query, user_id):
         """Handle AI model switching"""
@@ -252,6 +263,10 @@ class BotHandlers:
             await self.show_profile_tools(query, user_id)
         elif tool_type == "marketing":
             await self.show_marketing_tools(query, user_id)
+        elif tool_type == "communication":
+            await self.show_communication_tools(query, user_id)
+        elif tool_type == "exports":
+            await self.show_export_tools(query, user_id)
     
     async def show_investigation_tools(self, query, user_id):
         """Show financial investigation tools"""
@@ -394,6 +409,60 @@ class BotHandlers:
             "• **International Marketing** - Cross-border strategies\n"
             "• **Performance Analysis** - ROI and conversion tracking\n\n"
             "Select a tool to enhance your marketing strategy:",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode=ParseMode.MARKDOWN
+        )
+    
+    async def show_communication_tools(self, query, user_id):
+        """Show communication and security tools"""
+        keyboard = [
+            [InlineKeyboardButton("🎣 Phishing Analyzer", callback_data="comm_phishing")],
+            [InlineKeyboardButton("📧➡️📱 SMTP to SMS", callback_data="comm_sms")],
+            [InlineKeyboardButton("📧 Mass Email Tool", callback_data="comm_mass_email")],
+            [InlineKeyboardButton("🔒 Email Security Check", callback_data="comm_security")],
+            [InlineKeyboardButton("🚨 Threat Detection", callback_data="comm_threat")],
+            [InlineKeyboardButton("📊 Communication Analytics", callback_data="comm_analytics")],
+            [InlineKeyboardButton("🔙 Back to Main", callback_data="back_main")]
+        ]
+        
+        await query.edit_message_text(
+            "📧 *Communication & Security Suite*\n\n"
+            "*Advanced Communication Tools:*\n\n"
+            "• **🎣 Phishing Analyzer** - Detect malicious emails and links\n"
+            "• **📧➡️📱 SMTP to SMS** - Send SMS via email gateways\n"
+            "• **📧 Mass Email Tool** - Professional bulk email campaigns\n"
+            "• **🔒 Email Security Check** - Header and authentication analysis\n"
+            "• **🚨 Threat Detection** - AI-powered threat identification\n"
+            "• **📊 Communication Analytics** - Message pattern analysis\n\n"
+            "⚠️ *Professional tools for legitimate security and communication purposes only*",
+            reply_markup=InlineKeyboardMarkup(keyboard),
+            parse_mode=ParseMode.MARKDOWN
+        )
+    
+    async def show_export_tools(self, query, user_id):
+        """Show data export tools"""
+        keyboard = [
+            [InlineKeyboardButton("💬 Export Messages", callback_data="export_messages")],
+            [InlineKeyboardButton("👥 Export Users", callback_data="export_users")],
+            [InlineKeyboardButton("🔍 Export Investigations", callback_data="export_investigations")],
+            [InlineKeyboardButton("🏢 Export Companies", callback_data="export_companies")],
+            [InlineKeyboardButton("🚨 Export Scam Analysis", callback_data="export_scams")],
+            [InlineKeyboardButton("🆔 Export Profiles", callback_data="export_profiles")],
+            [InlineKeyboardButton("📁 View Export Files", callback_data="export_view_files")],
+            [InlineKeyboardButton("🔙 Back to Main", callback_data="back_main")]
+        ]
+        
+        await query.edit_message_text(
+            "📥 *Data Export Suite*\n\n"
+            "*Available Export Options:*\n\n"
+            "• **💬 Messages** - Conversation logs and analytics\n"
+            "• **👥 Users** - User statistics and activity data\n"
+            "• **🔍 Investigations** - Financial investigation reports\n"
+            "• **🏢 Companies** - Company analysis data\n"
+            "• **🚨 Scam Analysis** - Security threat reports\n"
+            "• **🆔 Profiles** - Generated profile data\n"
+            "• **📁 View Files** - Access existing export files\n\n"
+            "*All exports are in CSV format for easy analysis*",
             reply_markup=InlineKeyboardMarkup(keyboard),
             parse_mode=ParseMode.MARKDOWN
         )
@@ -624,6 +693,289 @@ class BotHandlers:
         }
         return analysis_map.get(analysis_type, 'assistant')
     
+    async def handle_communication_tool(self, query, user_id):
+        """Handle communication tool selection"""
+        tool_type = query.data.replace("comm_", "")
+        
+        if tool_type == "phishing":
+            await query.edit_message_text(
+                "🎣 *Phishing Analyzer Ready*\n\n"
+                "I can analyze suspicious emails, messages, and links for phishing threats.\n\n"
+                "**What I can detect:**\n"
+                "• Malicious URLs and domains\n"
+                "• Social engineering tactics\n"
+                "• Email spoofing attempts\n"
+                "• Financial scam indicators\n"
+                "• Urgency and pressure tactics\n\n"
+                "**Next Step:** Send me the suspicious content to analyze\n\n"
+                "*Format:* Just paste the suspicious email content, message text, or URLs",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            # Switch to scam detection model for phishing analysis
+            self.user_models[user_id] = 'scam_search'
+        
+        elif tool_type == "sms":
+            await query.edit_message_text(
+                "📧➡️📱 *SMTP to SMS Gateway*\n\n"
+                "Send SMS messages through email-to-SMS gateways.\n\n"
+                "**Supported Carriers:**\n"
+                "• Verizon (@vtext.com)\n"
+                "• AT&T (@txt.att.net)\n"
+                "• T-Mobile (@tmomail.net)\n"
+                "• UK carriers (Vodafone, EE, Three, O2)\n\n"
+                "**Required Information:**\n"
+                "• SMTP server details (Gmail, Outlook, etc.)\n"
+                "• Phone number and carrier\n"
+                "• Message content (160 chars max)\n\n"
+                "**Next Step:** Send me your SMS request in this format:\n"
+                "`SMS: [phone] [carrier] [message]`\n\n"
+                "*Example:* `SMS: 1234567890 verizon Hello from bot!`",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif tool_type == "mass_email":
+            await query.edit_message_text(
+                "📧 *Mass Email Campaign Tool*\n\n"
+                "Create and send professional bulk email campaigns.\n\n"
+                "**Features:**\n"
+                "• HTML email templates\n"
+                "• Professional formatting\n"
+                "• Attachment support\n"
+                "• Delivery tracking\n"
+                "• Multiple SMTP providers\n\n"
+                "**Template Types:**\n"
+                "• Business announcements\n"
+                "• Newsletters\n"
+                "• Marketing campaigns\n"
+                "• Custom templates\n\n"
+                "**Next Step:** Send me your campaign details:\n"
+                "`EMAIL: [type] [subject] [recipient_count] [message]`",
+                parse_mode=ParseMode.MARKDOWN
+            )
+        
+        elif tool_type == "security":
+            await query.edit_message_text(
+                "🔒 *Email Security Analyzer*\n\n"
+                "Comprehensive email header and authentication analysis.\n\n"
+                "**Security Checks:**\n"
+                "• SPF authentication status\n"
+                "• DKIM signature verification\n"
+                "• DMARC policy compliance\n"
+                "• Sender reputation analysis\n"
+                "• Header tampering detection\n\n"
+                "**Next Step:** Send me email headers to analyze\n\n"
+                "*Tip:* Copy the full email headers including 'Received', 'Authentication-Results', etc.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            self.user_models[user_id] = 'scam_search'
+        
+        elif tool_type == "threat":
+            await query.edit_message_text(
+                "🚨 *AI Threat Detection System*\n\n"
+                "Advanced threat analysis using AI-powered detection.\n\n"
+                "**Threat Categories:**\n"
+                "• Malware indicators\n"
+                "• Social engineering\n"
+                "• Data exfiltration attempts\n"
+                "• Business email compromise\n"
+                "• Advanced persistent threats\n\n"
+                "**Analysis Methods:**\n"
+                "• Pattern recognition\n"
+                "• Behavioral analysis\n"
+                "• Content examination\n"
+                "• Risk scoring\n\n"
+                "**Next Step:** Send me content to analyze for threats",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            self.user_models[user_id] = 'scam_search'
+        
+        elif tool_type == "analytics":
+            await query.edit_message_text(
+                "📊 *Communication Analytics*\n\n"
+                "Analyze communication patterns and extract insights.\n\n"
+                "**Analytics Features:**\n"
+                "• Message sentiment analysis\n"
+                "• Communication frequency patterns\n"
+                "• Language and tone analysis\n"
+                "• Relationship mapping\n"
+                "• Trend identification\n\n"
+                "**Use Cases:**\n"
+                "• Customer service optimization\n"
+                "• Team communication analysis\n"
+                "• Marketing message effectiveness\n"
+                "• Security incident investigation\n\n"
+                "**Next Step:** Send me communication data to analyze",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            self.user_models[user_id] = 'assistant'
+    
+    async def handle_export_tool(self, query, user_id):
+        """Handle export tool selection"""
+        export_type = query.data.replace("export_", "")
+        
+        try:
+            if export_type == "messages":
+                # Export message logs
+                export_file = self.dashboard.csv_exporter.export_messages_to_csv(list(self.dashboard.message_logs))
+                if export_file:
+                    await query.edit_message_text(
+                        "💬 *Messages Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"📊 **Records:** {len(self.dashboard.message_logs)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• User messages and AI responses\n"
+                        "• Timestamps and user IDs\n"
+                        "• AI model usage data\n"
+                        "• Response times and analytics\n\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "users":
+                # Export user statistics
+                export_file = self.dashboard.csv_exporter.export_users_to_csv(dict(self.dashboard.user_stats))
+                if export_file:
+                    await query.edit_message_text(
+                        "👥 *Users Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"👤 **Users:** {len(self.dashboard.user_stats)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• User activity statistics\n"
+                        "• Model usage patterns\n"
+                        "• Command usage data\n"
+                        "• Session information\n\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "investigations":
+                # Export investigation data
+                investigations = self.dashboard._get_investigations_data()
+                export_file = self.dashboard.csv_exporter.export_investigations_to_csv(investigations)
+                if export_file:
+                    await query.edit_message_text(
+                        "🔍 *Investigations Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"🔎 **Investigations:** {len(investigations)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• Financial investigation queries\n"
+                        "• AML analysis results\n"
+                        "• Investigation summaries\n"
+                        "• User and timestamp data\n\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "companies":
+                # Export company data
+                companies = self.dashboard._get_companies_data()
+                export_file = self.dashboard.csv_exporter.export_companies_to_csv(companies)
+                if export_file:
+                    await query.edit_message_text(
+                        "🏢 *Companies Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"🏢 **Companies:** {len(companies)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• Company analysis data\n"
+                        "• Business model information\n"
+                        "• Registration details\n"
+                        "• Industry classifications\n\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "scams":
+                # Export scam analysis data
+                scams = self.dashboard._get_scams_data()
+                export_file = self.dashboard.csv_exporter.export_scams_to_csv(scams)
+                if export_file:
+                    await query.edit_message_text(
+                        "🚨 *Scam Analysis Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"🚨 **Analyses:** {len(scams)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• Scam detection results\n"
+                        "• Risk assessments\n"
+                        "• Threat classifications\n"
+                        "• Analysis timestamps\n\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "profiles":
+                # Export profile data
+                profiles = self.dashboard._get_profiles_data()
+                export_file = self.dashboard.csv_exporter.export_profiles_to_csv(profiles)
+                if export_file:
+                    await query.edit_message_text(
+                        "🆔 *Profiles Export Complete*\n\n"
+                        f"✅ **Export Status:** Successful\n"
+                        f"📁 **File:** {os.path.basename(export_file)}\n"
+                        f"🆔 **Profiles:** {len(profiles)}\n"
+                        f"🗓️ **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+                        "**Includes:**\n"
+                        "• Generated profile data\n"
+                        "• UK identity information\n"
+                        "• Address and contact details\n"
+                        "• Document numbers\n\n"
+                        "⚠️ **Note:** All data is fictional for testing purposes\n"
+                        "🌐 **Access:** Visit the dashboard Export tab to download",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text("❌ Export failed. Please try again.", parse_mode=ParseMode.MARKDOWN)
+            
+            elif export_type == "view_files":
+                # Show available export files
+                files = self.dashboard.csv_exporter.get_export_files()
+                if files:
+                    file_list = "\n".join([f"• {f['filename']} ({f['size']:,} bytes)" for f in files[:10]])
+                    await query.edit_message_text(
+                        "📁 *Available Export Files*\n\n"
+                        f"**Recent Files ({len(files)} total):**\n"
+                        f"{file_list}\n\n"
+                        "🌐 **Access All Files:** Visit the dashboard Export tab\n"
+                        "💾 **Download:** Click any file to download as CSV\n\n"
+                        "*Files are sorted by creation date (newest first)*",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                else:
+                    await query.edit_message_text(
+                        "📁 *No Export Files Available*\n\n"
+                        "No data exports have been created yet.\n\n"
+                        "Use the export options above to generate CSV files with your data.",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+        
+        except Exception as e:
+            logger.error(f"Export error: {e}")
+            await query.edit_message_text(
+                "❌ *Export Error*\n\n"
+                "An error occurred during the export process.\n\n"
+                "Please try again or contact support if the issue persists.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+    
     # Keep all existing methods (help_command, clear_command, handle_message, etc.)
     # but with enhanced system messages...
     
@@ -691,7 +1043,9 @@ class BotHandlers:
             "• **Company Intelligence Platform** - Business analysis, competitive intelligence\n"
             "• **Scam Detection Database** - Fraud identification, protection strategies\n"
             "• **UK Profile Generator** - Testing data creation (fictional profiles)\n"
-            "• **Marketing Analytics Suite** - Campaign strategy, audience analysis\n\n"
+            "• **Marketing Analytics Suite** - Campaign strategy, audience analysis\n"
+            "• **Communication Tools** - Phishing analysis, SMTP to SMS, mass email\n"
+            "• **Data Export Suite** - CSV exports of all data and analytics\n\n"
             "*📋 Commands:*\n"
             "• `/start` - Main menu with expert selection and tools\n"
             "• `/models` - Switch between AI experts\n"
@@ -1033,7 +1387,12 @@ class BotHandlers:
         tool_keywords = AIModelConfig.get_tool_indicators(model_id)
         query_lower = query.lower()
         
-        if any(keyword in query_lower for keyword in tool_keywords):
+        # Check for communication tool keywords
+        comm_keywords = ['phishing', 'sms:', 'email:', 'smtp', 'security check', 'threat', 'suspicious']
+        if any(keyword in query_lower for keyword in comm_keywords):
+            if model_id == 'scam_search':
+                response += f"\n\n📧 *Analysis completed using Communication Security Suite*"
+        elif any(keyword in query_lower for keyword in tool_keywords):
             model_info = self.config.get_model_config(model_id)
             tool_name = {
                 'financial': '🔍 *Analysis completed using Financial Investigation Suite tools*',
