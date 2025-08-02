@@ -3064,3 +3064,17 @@ task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at
 2025-08-02 13:39:31,902 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
 2025-08-02 13:39:32,338 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/answerCallbackQuery "HTTP/1.1 200 OK"
 2025-08-02 13:39:32,501 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 13:39:42,047 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:39:42,588 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:39:43,028 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-02 13:39:43,193 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/editMessageText "HTTP/1.1 200 OK"
+2025-08-02 13:39:52,736 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:01,486 - werkzeug - INFO - 172.31.66.226 - - [02/Aug/2025 13:40:01] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:40:02,878 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:13,020 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:23,163 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:31,479 - werkzeug - INFO - 172.31.66.226 - - [02/Aug/2025 13:40:31] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:40:33,305 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:43,449 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
+2025-08-02 13:40:51,302 - werkzeug - INFO - 172.31.66.226 - - [02/Aug/2025 13:40:51] "GET /api/export-files HTTP/1.1" 200 -
+2025-08-02 13:40:53,591 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8213380850:AAFnBwzyFxvL5Eyhv3VsFnm7w_iOCAqKJXc/getUpdates "HTTP/1.1 200 OK"
