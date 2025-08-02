@@ -2763,3 +2763,17 @@ task: <Task pending name='Task-9' coro=<Application._update_fetcher() running at
 2025-08-02 13:06:31,215 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
 2025-08-02 13:06:31,599 - bot_handlers - INFO - User 6550499578 successfully authenticated
 2025-08-02 13:06:31,599 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 13:06:40,248 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:40] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:06:40,249 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:06:40] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:07:01,912 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 13:07:02,300 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 13:07:02,301 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:07:02,441 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:07:10,248 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:07:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:07:10,251 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:07:10] "GET /api/scams HTTP/1.1" 200 -
+2025-08-02 13:07:10,963 - bot_handlers - ERROR - Professional system error: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+2025-08-02 13:07:14,051 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:07:14,225 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:07:19,520 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 13:07:19,520 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 13:07:19,530 - telegram.ext._application - INFO - Application.stop() complete
