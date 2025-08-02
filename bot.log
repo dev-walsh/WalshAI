@@ -2367,3 +2367,40 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:35:29,538 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:35:29] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:35:29,544 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:35:29] "GET /api/company-clones HTTP/1.1" 200 -
 2025-08-02 12:35:39,364 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:35:43,910 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:35:44,067 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 12:35:45,317 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:35:53,953 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): Latest Coinbase scam?...
+2025-08-02 12:35:59,541 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:35:59] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:35:59,544 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:35:59] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:36:24,419 - bot_handlers - INFO - Successfully provided professional analysis to user 6550499578 using scam_search expert
+2025-08-02 12:36:29,539 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:36:29] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:36:29,541 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:36:29] "GET /api/company-clones HTTP/1.1" 200 -
+2025-08-02 12:36:39,855 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:36:50,576 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
+2025-08-02 12:36:50,577 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-08-02 12:36:50,587 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 12:36:51,768 - config - INFO - Configuration validation successful
+2025-08-02 12:36:51,784 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:36:51,785 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:36:51,991 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:36:51,991 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:36:56,143 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:36:56,345 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:36:56,352 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:36:56,352 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:36:56,352 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:36:56,353 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:36:56,356 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+2025-08-02 12:36:56,356 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:36:56,782 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:36:56] "GET / HTTP/1.1" 200 -
+2025-08-02 12:36:58,896 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:36:58,896 - telegram.ext._application - INFO - Application started
+2025-08-02 12:37:04,637 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:37:04] "GET / HTTP/1.1" 200 -
+2025-08-02 12:37:23,181 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:37:25,552 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:37:25,692 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 12:37:29,527 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
