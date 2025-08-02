@@ -2647,3 +2647,12 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:59:05,172 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:59:05] "GET /api/stats HTTP/1.1" 200 -
 2025-08-02 12:59:30,298 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
 2025-08-02 12:59:30,674 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:59:32,864 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:59:33,020 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 12:59:33,020 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:59:35,180 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 12:59:35] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 13:00:03,320 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 13:00:03,833 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 13:00:03,833 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:00:04,158 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 13:00:05,176 - werkzeug - INFO - 172.31.66.162 - - [02/Aug/2025 13:00:05] "GET /api/stats HTTP/1.1" 200 -
