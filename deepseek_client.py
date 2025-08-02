@@ -63,8 +63,7 @@ class DeepSeekClient:
         adapter = HTTPAdapter(
             pool_connections=5,
             pool_maxsize=10,
-            max_retries=retry_strategy,
-            socket_options=[(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)]
+            max_retries=retry_strategy
         )
         
         self.session.mount("http://", adapter)
