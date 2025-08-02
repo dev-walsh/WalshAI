@@ -2250,3 +2250,39 @@ jinja2.exceptions.TemplateNotFound: dashboard.html
 2025-08-02 12:27:37,870 - telegram.ext._application - INFO - Application is stopping. This might take a moment.
 2025-08-02 12:27:37,871 - apscheduler.scheduler - INFO - Scheduler has been shut down
 2025-08-02 12:27:37,881 - telegram.ext._application - INFO - Application.stop() complete
+2025-08-02 12:28:05,787 - config - INFO - Configuration validation successful
+2025-08-02 12:28:05,803 - __main__ - INFO - Testing DeepSeek API connection...
+2025-08-02 12:28:05,803 - deepseek_client - INFO - Testing basic network connectivity...
+2025-08-02 12:28:06,018 - deepseek_client - INFO - Basic connectivity confirmed
+2025-08-02 12:28:06,018 - deepseek_client - INFO - Testing API authentication...
+2025-08-02 12:28:09,509 - deepseek_client - INFO - DeepSeek API connection test successful
+2025-08-02 12:28:09,509 - __main__ - INFO - ✅ DeepSeek API connection successful
+2025-08-02 12:28:09,514 - web_dashboard - INFO - Enhanced dashboard initialized for Windows environment
+2025-08-02 12:28:09,514 - __main__ - INFO - Web Dashboard started on http://0.0.0.0:5000
+2025-08-02 12:28:09,514 - __main__ - INFO - Starting WalshAI Multi-Expert AI Bot...
+2025-08-02 12:28:09,516 - __main__ - INFO - Dashboard available at: http://localhost:5000
+2025-08-02 12:28:09,518 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+2025-08-02 12:28:09,518 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-02 12:28:09,955 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:28:09] "GET / HTTP/1.1" 200 -
+2025-08-02 12:28:10,777 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:28:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:28:10,797 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:28:10] "GET /api/messages HTTP/1.1" 200 -
+2025-08-02 12:28:12,003 - apscheduler.scheduler - INFO - Scheduler started
+2025-08-02 12:28:12,004 - telegram.ext._application - INFO - Application started
+2025-08-02 12:28:40,817 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:28:40] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:29:10,821 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:29:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:29:18,184 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:29:22,478 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): 5015...
+2025-08-02 12:29:22,647 - bot_handlers - INFO - User 6550499578 successfully authenticated
+2025-08-02 12:29:27,139 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:29:31,352 - bot_handlers - INFO - User 6550499578 (wlsfx) started the bot
+2025-08-02 12:29:40,816 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:29:40] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:29:40,857 - bot_handlers - INFO - Received message from user 6550499578 (wlsfx): Latest Coinbase scams ?...
+2025-08-02 12:30:10,818 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:30:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:30:11,186 - deepseek_client - ERROR - Connection error: HTTPSConnectionPool(host='api.deepseek.com', port=443): Read timed out.
+2025-08-02 12:30:11,635 - bot_handlers - WARNING - API client returned error for user 6550499578: 🌐 Connection error - please check your internet connection and try again....
+2025-08-02 12:30:40,816 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:30:40] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:31:10,817 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:31:10] "GET /api/stats HTTP/1.1" 200 -
+2025-08-02 12:31:40,810 - werkzeug - INFO - 172.31.109.66 - - [02/Aug/2025 12:31:40] "GET /api/stats HTTP/1.1" 200 -
