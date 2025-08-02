@@ -6,6 +6,7 @@ import logging
 import requests
 import json
 import time
+import socket
 from typing import List, Dict, Optional
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -22,23 +23,31 @@ class DeepSeekClient:
         self.timeout = min(timeout, 15)  # Cap at 15 seconds max
         self.max_retries = min(max_retries, 2)  # Reduce retries for speed
 
-        # Configure optimized session
+        # Configure optimized session with better connection handling
         self.session = requests.Session()
 
-        # Optimized retry strategy for speed
+        # Enhanced retry strategy with connection error handling
         retry_strategy = Retry(
-            total=self.max_retries,
+            total=3,  # Increased for connection issues
             status_forcelist=[429, 500, 502, 503, 504],
             allowed_methods=["POST"],
-            backoff_factor=0.3,  # Faster backoff
-            raise_on_status=False
+            backoff_factor=0.5,
+            raise_on_status=False,
+            # Add connection error retries
+            connect=3,
+            read=3
         )
 
-        # Single optimized adapter configuration
+        # Enhanced adapter configuration for better connectivity
         adapter = HTTPAdapter(
-            pool_connections=10,
-            pool_maxsize=20,
-            max_retries=retry_strategy
+            pool_connections=5,
+            pool_maxsize=10,
+            max_retries=retry_strategy,
+            socket_options=[
+                (socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1),
+                (socket.IPPROTO_TCP, socket.TCP_KEEPINTVL, 10),
+                (socket.IPPROTO_TCP, socket.TCP_KEEPCNT, 6),
+            ]
         )
 
         self.session.mount("http://", adapter)
@@ -118,27 +127,46 @@ class DeepSeekClient:
             logger.error(f"Request timeout ({self.timeout}s) - DeepSeek API too slow")
             return "⏰ Response timeout - the AI service is responding slowly. Please try again."
 
-        except requests.exceptions.ConnectionError:
-            logger.error("Connection error to DeepSeek API")
-            return "🌐 Connection error - please check your internet connection and try again."
+        except requests.exceptions.ConnectionError as e:
+            logger.error(f"Connection error to DeepSeek API: {e}")
+            # Try to determine if it's a DNS/network issue
+            if "Name or service not known" in str(e) or "nodename nor servname provided" in str(e):
+                return "🌐 DNS resolution error - check your internet connection and DNS settings."
+            elif "Connection refused" in str(e):
+                return "🔒 DeepSeek API service temporarily unavailable - please try again in a few moments."
+            else:
+                return "🌐 Connection error - please check your internet connection and try again."
 
         except requests.exceptions.RequestException as e:
             logger.error(f"Network error calling DeepSeek API: {e}")
-            return "🌐 Network error - please try again later."
+            if "SSL" in str(e).upper():
+                return "🔒 SSL/TLS connection error - please check your network security settings."
+            else:
+                return "🌐 Network error - please try again later."
 
         except Exception as e:
             logger.error(f"Unexpected error calling DeepSeek API: {e}")
             return "❌ Unexpected error occurred. Please try again."
 
     def test_connection(self) -> bool:
-        """Test API connection and credentials"""
+        """Test API connection and credentials with enhanced diagnostics"""
         try:
+            # First test basic connectivity
+            import socket
+            try:
+                socket.create_connection(("api.deepseek.com", 443), timeout=5)
+                logger.info("Basic network connectivity to DeepSeek API confirmed")
+            except Exception as e:
+                logger.warning(f"Basic connectivity test failed: {e}")
+                return False
+            
+            # Test API call
             test_messages = [
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": "Hello"}
             ]
             response = self.create_chat_completion(test_messages)
-            return response is not None
+            return response is not None and not response.startswith('🌐') and not response.startswith('🔒')
         except Exception as e:
             logger.error(f"Connection test failed: {e}")
             return False

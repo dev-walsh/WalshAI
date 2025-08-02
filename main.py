@@ -42,12 +42,23 @@ def main():
         # Initialize bot handlers
         bot_handlers = BotHandlers(config)
 
-        # Test DeepSeek connection at startup
+        # Test DeepSeek connection at startup with retry
         logger.info("Testing DeepSeek API connection...")
-        if bot_handlers.deepseek_client.test_connection():
-            logger.info("✅ DeepSeek API connection successful")
-        else:
-            logger.warning("⚠️ DeepSeek API connection failed - check your API key and credits")
+        connection_attempts = 0
+        max_attempts = 3
+        
+        while connection_attempts < max_attempts:
+            if bot_handlers.deepseek_client.test_connection():
+                logger.info("✅ DeepSeek API connection successful")
+                break
+            else:
+                connection_attempts += 1
+                if connection_attempts < max_attempts:
+                    logger.warning(f"⚠️ Connection attempt {connection_attempts} failed, retrying in 5 seconds...")
+                    time.sleep(5)
+                else:
+                    logger.warning("⚠️ DeepSeek API connection failed after 3 attempts - check your API key, credits, and network connection")
+                    logger.info("Bot will still start - connection may be restored during runtime")
 
         # Initialize web dashboard
         dashboard = BotDashboard(bot_handlers)

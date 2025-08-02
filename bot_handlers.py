@@ -902,8 +902,23 @@ class BotHandlers:
                 
                 logger.info(f"Successfully provided professional analysis to user {user_id} using {current_model} expert")
                 
-            elif response and (response.startswith('❌') or response.startswith('⏰') or response.startswith('🌐')):
-                await update.message.reply_text(response, parse_mode=ParseMode.MARKDOWN)
+            elif response and (response.startswith('❌') or response.startswith('⏰') or response.startswith('🌐') or response.startswith('🔒')):
+                # Enhanced error message for connection issues
+                if response.startswith('🌐') or response.startswith('🔒'):
+                    enhanced_error = (
+                        f"{response}\n\n"
+                        "**🔧 Troubleshooting Steps:**\n"
+                        "1. Check your internet connection\n"
+                        "2. Try again in a few moments\n"
+                        "3. Use /start to access tools menu\n\n"
+                        "**💡 Alternative:** Use offline tools while connection is restored\n"
+                        "- Profile Generator\n"
+                        "- Document Templates\n"
+                        "- Analysis Frameworks"
+                    )
+                    await update.message.reply_text(enhanced_error, parse_mode=ParseMode.MARKDOWN)
+                else:
+                    await update.message.reply_text(response, parse_mode=ParseMode.MARKDOWN)
                 logger.warning(f"API client returned error for user {user_id}: {response[:100]}...")
                 
             else:
